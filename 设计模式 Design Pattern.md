@@ -1,6 +1,8 @@
 # 设计模式 Design Pattern
 
-1. a:应用场景
+典型用法:
+
+类图:
 
 b:UML
 
