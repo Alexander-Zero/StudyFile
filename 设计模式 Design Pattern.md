@@ -1,6 +1,10 @@
+[TOC]
+
+
+
 # 设计模式 Design Pattern
 
-### 面向对象的六大原则
+## 面向对象的六大原则
 
 SRP单一职责原则(Single Responsibility Principle): 高内聚,低耦合
 
@@ -14,7 +18,7 @@ ISP接口隔离原则(Interface Segregation Principle): 接口单一职责
 
 LoD迪米特法则(Law of Demeter): 高内聚,低耦合(尽量不要和陌生人说话)
 
-### 指导思想
+## 指导思想
 
 Maintainability 可维护性
 
@@ -24,7 +28,7 @@ Reusability 可复用性
 
 Flexibility Mobility Adapatability灵活性
 
-### 设计模式描述方式
+## 设计模式描述方式
 
 典型用法
 
@@ -33,6 +37,8 @@ UML类图
 代码
 
 优缺点
+
+## 设计模式
 
 ## 1 创建型
 
@@ -186,6 +192,8 @@ public class Main extends Frame {
 对大型复杂对象(含多属性)的构建
 
 1.3.2 UML类图
+
+![Builder](C:\Users\AlexanderZero\Desktop\Builder.png)
 
 1.3.3 代码
 
@@ -384,9 +392,23 @@ public enum Singleton3 {
 
 #### 		2.1.2 UML图
 
+![Adaptor](C:\Users\AlexanderZero\Desktop\Adaptor.png)
+
 #### 		2.1.3 
 
 ### 	2.2 Bridge (桥接模式)
+
+典型引用: 类的抽象在扩展,类的实现也在扩展,若采用继承会造成类爆炸
+
+UML
+
+![Bridge](C:\Users\AlexanderZero\Desktop\Bridge.png)
+
+#### 	代码
+
+```java
+
+```
 
 ### 	2.3 Composite (组合模式)
 
@@ -540,6 +562,8 @@ public class FilterObject {
 
 UML图
 
+![Command](C:\Users\AlexanderZero\Desktop\Command.png)
+
 代码
 
 ```java
@@ -661,6 +685,8 @@ public class MainCommand {
 
 UML
 
+![iterator](C:\Users\AlexanderZero\Desktop\iterator.png)
+
 ### 3.6 Mediator (调停者)
 
 内部系统各组件之间相互有关联导致关联情况太复杂,若添加组件需添加很多的关联情况,修改很多的代码(如果有if else这样的代码),所以对所有组件进行抽象,所有组件都与同一个对象进行交互,容易扩展.
@@ -669,21 +695,109 @@ UML
 
 ### 3.7 Memento (备忘录)
 
-典型应用
+#### 典型应用
 
-对程序的某一个瞬时状态进行留存备份,已供后续回退之需,通过JAVA Serializable接口可存储在磁盘
+对程序的某一个瞬时状态进行留存备份,已供后续回退之需,通过Java Serializable接口可存储在磁盘, 多个Command回退也可到达同样效果
+
+#### 代码
+
+```java
+public class TankFrame extends Frame {
+
+    public static final int GAME_WIDTH = 800;
+    public static final int GAME_HEIGHT = 600;
+
+    public TankFrame() {
+        setVisible(true);
+        setSize(GAME_WIDTH, GAME_HEIGHT);
+        setResizable(false);
+        setTitle("Tank War");
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+
+        addKeyListener(new keyListener());
+    }
+	
+    //按键监听器
+    class keyListener extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int keyCode = e.getKeyCode();
+            switch (keyCode) {
+                //按下S键保存
+                case KeyEvent.VK_S:
+                    save();
+                    break;
+                //按下L键恢复
+                case KeyEvent.VK_L:
+                    load();
+                    break;
+            }
+        }
+
+
+    //保存快照 备注:GameModel及其包含的属性都需要实现Serializable 接口,否者报错, 若有些熟悉不需要存盘, 可用 transit 关键字 修饰
+    public void save() {
+        String savePath = "D:\\data";
+        ObjectOutputStream oos = null;
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream(new File(savePath)));
+            oos.writeObject(GameModel.getInstance());
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    //回复快照
+    public void load() {
+        String savePath = "D:\\data";
+        ObjectInputStream ois = null;
+        try {
+            ois = new ObjectInputStream(new FileInputStream(new File(savePath)));
+            Object o = ois.readObject();
+            GameModel.resetInstance((GameModel) o);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+}
+
+```
+
+
 
 ### 3.8 Observer (观察者)
 
-典型应用
+#### 典型应用
 
 源对象(Source) 发布 事件(Event) 各个观察者(Observer)根据自身情况处理事件, 可结合责任链使用, 如若有观察者处理, 后续的观察者不能再处理等等
 
-UML图
+#### UML图
 
-![clipboard](C:\Users\AlexanderZero\Desktop\clipboard.png)
+![clipboard](C:\Users\AlexanderZero\Desktop\observer.png)
 
-代码
+#### 代码
 
 ```java
 //事件源 action() 是发布事件的动作
