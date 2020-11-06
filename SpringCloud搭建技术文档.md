@@ -12,7 +12,7 @@
 
 ### 2   创建空的总项目
 
-![image-20201019090116042](C:\Users\cms19\AppData\Roaming\Typora\typora-user-images\image-20201019090116042.png)        
+![image-20201019090116042](images/image-20201019090116042.png)        
 
 
 
@@ -20,7 +20,7 @@
 
 需admin Server , admin ui ,(邮件通知需mail)
 
-![image-20201019090818238](C:\Users\cms19\AppData\Roaming\Typora\typora-user-images\image-20201019090818238.png)
+![image-20201019090818238](images/image-20201019090818238.png)
 
 勾选后需再添加以下starter
 
@@ -118,7 +118,7 @@ POM如下
 
 主类添加@EnableAdminServer注解
 
-![image-20201019093627353](C:\Users\cms19\AppData\Roaming\Typora\typora-user-images\image-20201019093627353.png)
+![image-20201019093627353](images/image-20201019093627353.png)
 
 application.xml配置如下
 
@@ -134,11 +134,11 @@ application.xml配置如下
 
 需Eureka Server, Actuator, Admin三个starter
 
-![image-20201019094102843](C:\Users\cms19\AppData\Roaming\Typora\typora-user-images\image-20201019094102843.png)
+![image-20201019094102843](images/image-20201019094102843.png)
 
 主启动类加@EnableEurekaServer注解
 
-![image-20201019094310282](C:\Users\cms19\AppData\Roaming\Typora\typora-user-images\image-20201019094310282.png)
+![image-20201019094310282](images/image-20201019094310282.png)
 
 POM配置配置如下
 
@@ -253,7 +253,7 @@ spring.boot.admin.client.url=http://localhost:8000/
 
   启动服务并访问查看是否启动成功 http://127.0.0.1:8100/ 
 
-![image-20201019095059677](C:\Users\cms19\AppData\Roaming\Typora\typora-user-images\image-20201019095059677.png)
+![image-20201019095059677](images/image-20201019095059677.png)
 
 
 
@@ -263,11 +263,11 @@ spring.boot.admin.client.url=http://localhost:8000/
 
 需Config server, eureka client, admin, actuator
 
-![image-20201019095432309](C:\Users\cms19\AppData\Roaming\Typora\typora-user-images\image-20201019095432309.png)
+![image-20201019095432309](images/image-20201019095432309.png)
 
 主类添加@EnableConfigServer
 
-![image-20201019095621913](C:\Users\cms19\AppData\Roaming\Typora\typora-user-images\image-20201019095621913.png)
+![image-20201019095621913](images/image-20201019095621913.png)
 
 POM配置文件如下
 
@@ -383,11 +383,11 @@ spring.boot.admin.client.url=http://localhost:8000/
 
 需Admin client, Eureka client, zipkin , sleuth, zuul ,actuator
 
-![image-20201019100114042](C:\Users\cms19\AppData\Roaming\Typora\typora-user-images\image-20201019100114042.png)
+![image-20201019100114042](images/image-20201019100114042.png)
 
 主类添加@EnableZuulProxy
 
-![image-20201019102438738](C:\Users\cms19\AppData\Roaming\Typora\typora-user-images\image-20201019102438738.png)
+![image-20201019102438738](images/image-20201019102438738.png)
 
 POM文件如下
 
@@ -563,7 +563,7 @@ spring.sleuth.sampler.rate=1
 
  需Admin client, Eureka client,Config Client, zipkin , sleuth, web,openfeign(包含ribbon 和hystrix) ,actuator等
 
-![image-20201030093344180](C:\Users\cms19\AppData\Roaming\Typora\typora-user-images\image-20201030093344180.png)
+![image-20201030093344180](images/image-20201030093344180.png)
 
  
 
@@ -673,7 +673,7 @@ POM文件如下
 
 主类上添加注解:@EnableEurekaClient , @EnableCircuitBroker, @EnableFeignClients
 
-![image-20201030094125590](C:\Users\cms19\AppData\Roaming\Typora\typora-user-images\image-20201030094125590.png)
+![image-20201030094125590](images/image-20201030094125590.png)
 
 application.properties文件配置如下
 
@@ -782,7 +782,7 @@ public class DemoApiFallbackFactory implements FallbackFactory<DemoApi> {
 
 访问接口返回如下(已成功降级):
 
-![image-20201030102529259](C:\Users\cms19\AppData\Roaming\Typora\typora-user-images\image-20201030102529259.png)
+![image-20201030102529259](images/image-20201030102529259.png)
 
 
 

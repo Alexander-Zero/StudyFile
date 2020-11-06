@@ -48,7 +48,7 @@ UML类图
 
 产品纵向扩展
 
-
+![0](设计模式 Design Pattern.assets/0.jpg)
 
 ### 1.2 Abstract Factory (抽象工厂)
 
@@ -760,7 +760,7 @@ public class TankFrame extends Frame {
         }
     }
 
-    //回复快照
+    //恢复快照
     public void load() {
         String savePath = "D:\\data";
         ObjectInputStream ois = null;
@@ -782,7 +782,6 @@ public class TankFrame extends Frame {
     }
 
 }
-
 ```
 
 
@@ -800,7 +799,7 @@ public class TankFrame extends Frame {
 #### 代码
 
 ```java
-//事件源 action() 是发布事件的动作
+ //事件源 action() 是发布事件的动作
 public class Source {
     private static List<Observer> observers = new ArrayList<>();
 
