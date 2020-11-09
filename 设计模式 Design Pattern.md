@@ -333,7 +333,7 @@ public class Singleton {
 ```
 
 ```java
-//双重检查, 懒汉式
+//双重检查, 懒汉式,需加volite
 public class Singleton1 {
     private static Singleton1 instance;
 
