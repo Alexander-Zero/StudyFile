@@ -4,7 +4,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * @version 1.0.0
- * @auther Alexander Zero
+ * @author Alexander Zero
  * @date 2020/11/24
  */
 public class TestReentrantReadWriteLock {
@@ -25,8 +25,8 @@ public class TestReentrantReadWriteLock {
 
     public static void read(Lock lock) {
         try {
-            Thread.sleep(1000);
             lock.lock();
+            Thread.sleep(1000);
             System.out.println("读取成功:" + value);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -37,8 +37,8 @@ public class TestReentrantReadWriteLock {
 
     public static void write(Lock lock, int value) {
         try {
-            Thread.sleep(1000);
             lock.lock();
+            Thread.sleep(1000);
             TestReentrantReadWriteLock.value = value;
             System.out.println("写入成功:" + value);
         } catch (InterruptedException e) {
