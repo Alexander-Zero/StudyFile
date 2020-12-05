@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @auther Alexander Zero
  * @date 2020/11/20
  */
-public class Test2ReentrantLock {
+public class TestReentrantLockInterupt {
     public static void main(String[] args) {
         ReentrantLock lock = new ReentrantLock();
 
