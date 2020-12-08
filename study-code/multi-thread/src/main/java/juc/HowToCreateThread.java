@@ -1,3 +1,5 @@
+package juc;
+
 /**
  * @version 1.0.0
  * @auther Alexander Zero
