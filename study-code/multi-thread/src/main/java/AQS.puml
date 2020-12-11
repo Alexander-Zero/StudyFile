@@ -1,0 +1,6 @@
+@startuml
+ReentrantLock -> ReentrantLock.Sync: lock
+ReentrantLock.Sync <-> END: lock
+
+
+@enduml

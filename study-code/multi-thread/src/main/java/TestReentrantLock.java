@@ -56,7 +56,7 @@ public class TestReentrantLock {
     public static void main(String[] args) {
         TestReentrantLock t = new TestReentrantLock();
         new Thread(t::m2).start();
-//        new Thread(t::m1).start();
+        new Thread(t::m1).start();
         new Thread(t::m3).start();
 
     }
