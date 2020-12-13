@@ -7,9 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="multi-thread" />
+        <module name="mq-broker" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="mq-broker" target="8" />
       <module name="multi-thread" target="8" />
     </bytecodeTargetLevel>
   </component>
