@@ -1,12 +1,18 @@
 # Linux命令
 
-常用命名
+### 常用命名
 
+```
 解压tar.gz文件
+	tar -xzvf 
+修改文件名 
+	使用移动文件命令 mv fileA fileB 
+创建文件夹
+	mkdir dirName
+创建文件
+	touch fileName
 
-tar -xzvf 
-
--x
+```
 
 
 
@@ -47,6 +53,26 @@ tar -xzvf
 
 
 ### 防火墙 firewall
+
+```
+1、开放指定端口
+      firewall-cmd --zone=public --add-port=1935/tcp --permanent
+       命令含义：
+           --zone #作用域
+           --add-port=1935/tcp  #添加端口，格式为：端口/通讯协议
+           --permanent  #永久生效，没有此参数重启后失效
+2、开启防火墙 
+    systemctl start firewalld
+
+关闭防火墙
+	s
+
+
+3、重启防火墙 
+	firewall-cmd --reload
+
+
+```
 
 
 
