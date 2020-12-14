@@ -1,0 +1,7 @@
+
+`
+java:S2095"EUse try-with-resources or close this "Channel" in a "finally" clause.(‡î‰´ûÿÿÿÿ
+™
+java:S1130"~Remove the declaration of thrown exception 'java.util.concurrent.TimeoutException', as it cannot be thrown from method's body.(¾Ä“àúÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(ÿ–Ú®
+N	java:S106("9Replace this use of System.out or System.err by a logger.(ˆŒÉ¢
