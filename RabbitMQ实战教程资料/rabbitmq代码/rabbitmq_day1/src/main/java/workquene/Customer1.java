@@ -12,7 +12,7 @@ public class Customer1 {
         Connection connection = RabbitMQUtils.getConnection();
         final Channel channel = connection.createChannel();
         channel.basicQos(1);//每一次只能消费一个消息
-        channel.queueDeclare("work",true,false,false,null);
+            channel.queueDeclare("work",true,false,false,null);
         //参数1:队列名称  参数2:消息自动确认 true  消费者自动向rabbitmq确认消息消费  false 不会自动确认消息
         channel.basicConsume("work",false,new DefaultConsumer(channel){
             @Override

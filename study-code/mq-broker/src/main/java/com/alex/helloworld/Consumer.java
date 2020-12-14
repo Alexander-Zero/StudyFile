@@ -11,16 +11,15 @@ import java.util.concurrent.TimeoutException;
  * @date 2020/12/13
  */
 public class Consumer {
-    public static void main(String[] args) throws IOException, TimeoutException {
+    public static void main(String[] args) throws IOException, TimeoutException, InterruptedException {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("47.115.129.137");
         factory.setPort(5672);
-//        factory.setVirtualHost("store");
         factory.setUsername("guest");
         factory.setPassword("guest");
-
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
+
 
         channel.basicQos(1);
 
