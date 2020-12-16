@@ -28,11 +28,15 @@
 
 ​	日志位置:  redis.conf 修改  logfile 
 
-5关闭
+5.关闭
 
 ​	./redis-cli shutdown  
 
-6.远程连接redis 服务
+6.设置认证
+
+​	配置文件: #requirepass password
+
+7.远程连接redis 服务
 
 ​	windows下: redis-cli -h hostname -p port -a 
 

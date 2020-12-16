@@ -18,11 +18,8 @@ public class Consumer1 {
 
         Connection connection = RabbitMqUtils.getConn();
         Channel channel = connection.createChannel();
-
         channel.exchangeDeclare("routeExchange", "direct", true, true, null);
-
         String queueName = channel.queueDeclare().getQueue();
-
         channel.queueBind(queueName, "routeExchange", "info", null);
 
         channel.basicConsume(queueName, false, new DefaultConsumer(channel) {

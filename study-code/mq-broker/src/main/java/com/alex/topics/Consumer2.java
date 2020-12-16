@@ -2,7 +2,6 @@ package com.alex.topics;
 
 import com.alex.RabbitMqUtils;
 import com.rabbitmq.client.*;
-import sun.plugin2.message.LaunchJVMAppletMessage;
 
 import java.io.IOException;
 

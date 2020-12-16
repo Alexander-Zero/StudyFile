@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/mq-broker/mq-broker.iml" filepath="$PROJECT_DIR$/mq-broker/mq-broker.iml" />
       <module fileurl="file://$PROJECT_DIR$/multi-thread/multi-thread.iml" filepath="$PROJECT_DIR$/multi-thread/multi-thread.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rabbitmq/rabbitmq.iml" filepath="$PROJECT_DIR$/rabbitmq/rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/study-code.iml" filepath="$PROJECT_DIR$/study-code.iml" />
     </modules>
   </component>
