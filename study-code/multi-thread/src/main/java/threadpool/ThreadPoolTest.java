@@ -20,8 +20,8 @@ public class ThreadPoolTest {
         String s = future.get();
 
         CompletableFuture<String> completableFuture = new CompletableFuture<>();
-        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor();
-        Stack
+//        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor();
+//        Stack
         ForkJoinPool forkJoinPool = new ForkJoinPool();
         MyTask myTask = new MyTask(0, 10000);
 

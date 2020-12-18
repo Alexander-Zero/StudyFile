@@ -18,12 +18,16 @@ public class Provider {
         Connection connection = RabbitMqUtils.getConn();
         Channel channel = connection.createChannel();
 
-        channel.exchangeDeclare("routeExchange", "direct", true, true, null);
+        channel.exchangeDeclare("testExchange", "direct", true, true, null);
 
-        channel.basicPublish("routeExchange", "error", null, "error message".getBytes());
-        channel.basicPublish("routeExchange", "info", null, "info message".getBytes());
-        channel.basicPublish("routeExchange", "info", null, "info message".getBytes());
-        channel.basicPublish("routeExchange", "warn", null, "warn message".getBytes());
+        channel.queueDeclare("testQueue", true, false, false, null);
+
+        channel.queueBind("testQueue","testExchange","testRouting");
+
+        channel.basicPublish("testExchange", "testRouting", null, "Success Msg".getBytes());
+//        channel.basicPublish("routeExchange", "info", null, "info message".getBytes());
+//        channel.basicPublish("routeExchange", "info", null, "info message".getBytes());
+//        channel.basicPublish("routeExchange", "warn", null, "warn message".getBytes());
 
         RabbitMqUtils.close(channel, connection);
 

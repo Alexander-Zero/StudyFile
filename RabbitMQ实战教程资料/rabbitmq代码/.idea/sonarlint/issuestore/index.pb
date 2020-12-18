@@ -13,3 +13,15 @@ d
 4rabbitmq_day1/src/main/java/workquene/Customer1.java,2\a\2a56df41686ee43cdccf8f5ab4d848fe5c14e6cb
 d
 4rabbitmq_day1/src/main/java/workquene/Customer2.java,b\d\bd7d42b8de8d2eec46114359e101f79892492377
+s
+Crabbitmq_springboot/src/main/java/com/baizhi/work/WorkCustomer.java,8\6\86d894f2e17090838a213083cf69a25cfb2deb48
+u
+Erabbitmq_springboot/src/main/java/com/baizhi/hello/HelloCustomer.java,4\2\42ec54b80fba9186ce5303cff25dabbd3b70402d
+w
+Grabbitmq_springboot/src/main/java/com/baizhi/fanout/FanoutCustomer.java,1\4\149cb83de5fd359eae30b4ddc793bc42258f5574
+u
+Erabbitmq_springboot/src/main/java/com/baizhi/route/RouteCustomer.java,f\1\f14674a92b692755d50d812817db625167c9b792
+u
+Erabbitmq_springboot/src/main/java/com/baizhi/topic/TopicCustomer.java,6\b\6b52c431e181c3922781f140c5ec4cb8c621597f
+s
+Crabbitmq_springboot/src/test/java/com/baizhi/test/TestRabbitMQ.java,c\8\c8da67840d3ce768a9e1bb0492cf0d98ae579086

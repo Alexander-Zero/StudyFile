@@ -1,0 +1,15 @@
+
+^
+java:S1854"ERemove this useless assignment to local variable "completableFuture".(¾âêÕûÿÿÿÿ
+N
+java:S1854"5Remove this useless assignment to local variable "s".(ª×şûÿÿÿÿ
+P
+java:S1854"<Remove this useless assignment to local variable "executor".(ùÆ½¬
+T	java:S125"<This block of commented-out lines of code should be removed.(­ÛçŸøÿÿÿÿ
+Q	java:S106"9Replace this use of System.out or System.err by a logger.(şÁ¯Ãıÿÿÿÿ
+A
+java:S1481"-Remove this unused "executor" local variable.(ùÆ½¬
+?
+java:S1481"&Remove this unused "s" local variable.(ª×şûÿÿÿÿ
+O
+java:S1481"6Remove this unused "completableFuture" local variable.(¾âêÕûÿÿÿÿ

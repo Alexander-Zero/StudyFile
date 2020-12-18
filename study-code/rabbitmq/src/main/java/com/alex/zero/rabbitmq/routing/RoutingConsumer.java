@@ -22,7 +22,9 @@ public class RoutingConsumer {
                     key = {"error", "warn"})
     })
     public void receiveWarnAndErrorMsg(String message) {
+        System.out.println("开始消费");
         System.out.println("warn and error consumer: " + message);
+        System.out.println("消费结束");
     }
 
 

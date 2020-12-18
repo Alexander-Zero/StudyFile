@@ -6,6 +6,7 @@
         <option value="$PROJECT_DIR$/multi-thread/pom.xml" />
         <option value="$PROJECT_DIR$/mq-broker/pom.xml" />
         <option value="$PROJECT_DIR$/rabbitmq/pom.xml" />
+        <option value="$PROJECT_DIR$/jvm/pom.xml" />
       </list>
     </option>
   </component>
