@@ -41,8 +41,8 @@ answer: jvm stack, native method stack, run-time constant pool, static reference
 常见垃圾回收算法
 
 	1. 标记清除(mark-sweep): 内存不连续,产生内存碎片
- 	2. 复制算法(copying): 占空间,性能好,无碎片
- 	3. 标记压缩(mark-compact): 效率低,没碎片, 不占空间
+	2. 复制算法(copying): 占空间,性能好,无碎片
+	3. 标记压缩(mark-compact): 效率低,没碎片, 不占空间
 
 
 
@@ -82,3 +82,29 @@ GC tunning: GC调优(分代调优)
 
 
 垃圾回收器: 
+
+
+
+-XX:ConcGCThreads=1 
+-XX:G1ConcRefinementThreads=4 
+-XX:GCDrainStackTargetSize=64 
+-XX:InitialHeapSize=515777856 
+-XX:MarkStackSize=4194304 
+-XX:MaxHeapSize=8252445696 
+-XX:MinHeapSize=6815736 
+-XX:+PrintCommandLineFlags 
+-XX:ReservedCodeCacheSize=251658240 
+-XX:+SegmentedCodeCache 
+-XX:+UseCompressedClassPointers 
+-XX:+UseCompressedOops 
+-XX:+UseG1GC 
+
+能力欠缺 
+|----阅读源码的能力, 快速了解API的能力.
+|----测试模拟线上环境的能力,并根据情况进行调优.
+
+软件工程职位分工:
+|----后端程序员
+|----前端程序员
+|----测试
+|----运维
