@@ -1,4 +1,4 @@
-# JVM 虚拟机 
+JVM 虚拟机 
 
 GC 基础知识
 
@@ -62,7 +62,7 @@ JVM内存分代模型 (部分垃圾回收器使用)
 
 5.永久代放堆内存(由JVMd对该部分进行内存管理), 元数据区 内存由操作系统管理(不受JVM管理)
 
-![image-20201218000017936](C:\Users\AlexanderZero\AppData\Roaming\Typora\typora-user-images\image-20201218000017936.png)
+![image-20201218000017936](images/image-20201218000017936.png)
 
 对象创建 & 对象存储位置 & 垃圾回收:
 
@@ -82,6 +82,13 @@ GC tunning: GC调优(分代调优)
 
 
 垃圾回收器: 
+
+![垃圾回收器](images/垃圾回收器.png)
+
+
+
+1. Serial 单线程串行 STW
+2.  
 
 
 
