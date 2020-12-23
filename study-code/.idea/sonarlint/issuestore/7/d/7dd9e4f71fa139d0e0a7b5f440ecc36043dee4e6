@@ -1,10 +1,10 @@
 
-V
-java:S1128"BRemove this unused import 'com.rabbitmq.client.ConnectionFactory'.(»ùÙÃ
-—
-java:S1130"~Remove the declaration of thrown exception 'java.util.concurrent.TimeoutException', as it cannot be thrown from method's body.(¾Ä“àúÿÿÿÿ
-g
-java:S1192"MDefine a constant instead of duplicating this literal "testExchange" 3 times.(‚¬Õ 8»Í†óæ.
-O	java:S125"<This block of commented-out lines of code should be removed.(¾ÖŠ‘
-^
-java:S2095"EUse try-with-resources or close this "Channel" in a "finally" clause.(‡î‰´ûÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(¾ÖŠ‘
+i
+java:S1192"MDefine a constant instead of duplicating this literal "testExchange" 3 times.(‚¬Õ 8»Í†óæ.
+™
+java:S1130"~Remove the declaration of thrown exception 'java.util.concurrent.TimeoutException', as it cannot be thrown from method's body.(¾Ä“àúÿÿÿÿ
+`
+java:S2095"EUse try-with-resources or close this "Channel" in a "finally" clause.(‡î‰´ûÿÿÿÿ
+X
+java:S1128"BRemove this unused import 'com.rabbitmq.client.ConnectionFactory'.(»ùÙÃ

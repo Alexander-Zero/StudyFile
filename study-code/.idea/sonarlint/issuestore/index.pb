@@ -33,3 +33,5 @@ i
 9multi-thread/src/main/java/threadpool/ThreadPoolTest.java,5\a\5a371db4fc1385cc3869c17a248e9c82a654de1a
 b
 2jvm/src/main/java/com/alex/zero/jvm/code/Test.java,6\8\68d854cb6fe684f174e8a66fc46cba619f83e984
+c
+3mq-broker/src/main/java/com/alex/RabbitMqUtils.java,6\b\6b9aaa9a1e040f62a8444593cd08ab81fd761aad
