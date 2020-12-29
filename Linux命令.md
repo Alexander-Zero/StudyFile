@@ -192,3 +192,18 @@ Dec 12 10:37:52 Gzzx rabbitmq-server[850627]: ERROR: distribution port 25672 in 
 执行 netstat -nlp  | grep port
 
 kill -9 pid
+
+
+
+
+
+
+
+
+
+centos 安装 连接无线网络问题
+
+https://blog.csdn.net/qq_42192818/article/details/103604901
+
+ip addr 查看
+
