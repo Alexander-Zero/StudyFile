@@ -1,6 +1,10 @@
+---
+
+---
+
 # JVM 虚拟机 
 
-GC 基础知识
+## GC 基础知识
 
 1.什么是垃圾(垃圾的定义)?
 
@@ -62,7 +66,7 @@ JVM内存分代模型 (部分垃圾回收器使用)
 
 5.永久代放堆内存(由JVMd对该部分进行内存管理), 元数据区 内存由操作系统管理(不受JVM管理)
 
-![image-20201218000017936](C:\Users\AlexanderZero\AppData\Roaming\Typora\typora-user-images\image-20201218000017936.png)
+![image-20201218000017936](images/image-20201218000017936.png)
 
 对象创建 & 对象存储位置 & 垃圾回收:
 
@@ -82,6 +86,13 @@ GC tunning: GC调优(分代调优)
 
 
 垃圾回收器: 
+
+![垃圾回收器](images/垃圾回收器.png)
+
+
+
+1. Serial 单线程串行 STW
+2.  
 
 
 
@@ -108,3 +119,91 @@ GC tunning: GC调优(分代调优)
 |----前端程序员
 |----测试
 |----运维
+
+
+
+## class文件结构
+
+
+
+
+
+## 类加载过程
+
+### loading 加载
+
+​	将class文件加载到内存(方式可多种多样,如class文件,zip文件等)
+
+### liking 连接
+
+#### 	verification
+
+​		验证class文件是否符合JVM规范
+
+#### 	preparation
+
+​		静态变量设置默认值
+
+#### 	resolution
+
+​		将类,方法,属性等符号引用解析为直接引用, 将常量池中的各种符号引用解析为为指针,偏移量等内存地址的直接引用
+
+### initializing 初始化
+
+​	调用类初始方法<cinit>,  将静态变量赋初始值
+
+![ClassLoad](images/ClassLoad.png)
+
+
+
+类加载到内存是创建了两个对象. 一个是class文件的二进制字节流, 一个是class对象, class对象指向 二进制字节流对象
+
+![image-20210104204037513](images/image-20210104204037513.png)
+
+双亲委派模型
+
+​	类加载器首先将加载过程委托给父加载器去加载,父加载器不能加载再自己加载
+
+​	作用:安全, 防止自己写的类覆盖jdk原有的类,实现数据窃取等问题.
+
+​	不同classloader加载的class文件不相等.
+
+​	父加载器 不是 父类加载加载器,他们不是继承关系
+
+​	加载路径 (具体见Lanucher类)  boostrap: sun.boot.class.path;  extension: java.ext.dirs ;  app: java.class.path 
+
+​	自定义类加载器,只需实现findClass方法(模板方法)
+
+​	**待做: 自定义ClassLoader, 实现 Jar文件加密**
+
+![ClassLoader](images/ClassLoader.png)
+
+
+
+Java执行过程的三种模式
+
+编译执行: 将class bytecode编译为本地代码执行, 启动慢,执行快,  -XComp
+
+解释执行: 再执行过程中把 bytecode解释为本地代码执行, 启动快,执行慢, -Xint
+
+混合模式: 刚开始解释执行,对热点代码(执行次数多的方法或代码块)编译为本地代码(Hot Spot由来) -Xmixed
+
+
+
+new 关键字步骤
+
+1.申请内存空间(赋默认值), 2.赋初始值
+
+
+
+### JMM  Java Memory Model  java内存模型
+
+![Snipaste_2020-12-19_22-47-14](images/Snipaste_2020-12-19_22-47-14.png)
+
+数据一致性问题(L1,L2数据不共享)
+
+1.总线锁 (Bus Lock) 效率低
+
+2.缓存一致性协议 (MESI --> 应用于缓存行)
+
+缓存行: 为提高效率, 按整行读取
