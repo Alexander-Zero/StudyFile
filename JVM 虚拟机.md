@@ -4,6 +4,8 @@
 
 # JVM 虚拟机 
 
+![interview](images/interview.png)
+
 ## GC 基础知识
 
 1.什么是垃圾(垃圾的定义)?
@@ -77,7 +79,9 @@ JVM内存分代模型 (部分垃圾回收器使用)
 5. 重复步骤 3,4, 每进行一次GC, 对象年龄 +1, 达到年龄阈值(默认15/CMS:6 , 可设置),进入老年代
 6. 老年代(顽固分子) 满, FGC(major GC), 会回收 年轻代 + 老年代
 
+![Snipaste_2020-12-23_21-49-45](images/Snipaste_2020-12-23_21-49-45.png)
 
+![Snipaste_2020-12-23_21-58-35](images/Snipaste_2020-12-23_21-58-35.png)
 
 GC tunning: GC调优(分代调优)
 
@@ -91,8 +95,39 @@ GC tunning: GC调优(分代调优)
 
 
 
-1. Serial 单线程串行 STW
-2.  
+1. Serial / Serial Old 单线程串行 STW
+
+   ![SerialGC](images/SerialGC-1609991266609.png)
+
+2. Parallel Scvenge / Parallel Old 多线程并行 STW
+
+   PS吞吐量优先, PN响应时间优先
+
+   吞吐量 = 执行代码时间 / 总时间 (执行代码时间+ STW) 
+
+3. ParNew + CMS (ConcurrentMarkSweep) + Serial Old
+
+   CMS : 并发, 标记清除算法, 一般配合ParNew 及 Serial Old使用, ParNew可配合CMS , PS不能, 
+
+   CMS缺点:易产生内存碎片, 不能回收浮动垃圾, 若CMS停止工作, Serial Old开始工作(极慢)
+
+   初始标记: 标记roots, 单线程,STW, 标记对象少, 时间很短.
+
+   并发标记: 使用根可达算法标记 多线程 标记可达对象.
+
+   重新标记: STW ,多线程标记 并发标记阶段 参数的对象
+
+   并发清理: 清理垃圾, 同时在此期间会产生浮动垃圾, 只能等待下一次垃圾回收时清理.
+
+   ![CMS-thread](images/CMS-thread.png)
+
+   ![CMS-](images/CMS-.png)
+
+4. G1
+
+5. xxx
+
+![Snipaste_2020-12-23_23-57-04](images/Snipaste_2020-12-23_23-57-04.png)
 
 
 
@@ -130,9 +165,19 @@ GC tunning: GC调优(分代调优)
 
 ## 类加载过程
 
+![classLoadProcess](images/classLoadProcess.png)
+
 ### loading 加载
 
 ​	将class文件加载到内存(方式可多种多样,如class文件,zip文件等)
+
+​	JVM规范未规定何时加载,但规定以下情况必须加载:
+
+	1. new, getStatic , putStatic , invoke_static 指令, 访问final 变量除外
+ 	2. java.lang.reflect对类进行反射时调用时
+ 	3. 初始化子类, 父类线初始化
+ 	4. 虚拟机启动时, 被执行的主类必须初始化
+ 	5. 动态语言支持java.lang.invoke.MethodHandle解析结果为Ref_getStatic, Ref_putStaic, ref_invokeStatic的方法句柄时, 该类必须被初始化.
 
 ### liking 连接
 
@@ -188,11 +233,21 @@ Java执行过程的三种模式
 
 混合模式: 刚开始解释执行,对热点代码(执行次数多的方法或代码块)编译为本地代码(Hot Spot由来) -Xmixed
 
+![javaProcessMode](images/javaProcessMode.png)
 
+![JVMCompile](images/JVMCompile.png)
+
+![JVMImpl](images/JVMImpl.png)
 
 ### JMM  Java Memory Model  java内存模型
 
+![JMM](images/JMM.png)
+
 ![Snipaste_2020-12-19_22-47-14](images/Snipaste_2020-12-19_22-47-14.png)
+
+![memorySpeed](images/memorySpeed.png)
+
+![Snipaste_2020-12-22_14-04-32](images/Snipaste_2020-12-22_14-04-32.png)
 
 数据一致性问题(L1,L2数据不共享)
 
@@ -222,7 +277,11 @@ mfence: mfence前后的读写操作都不能重排
 
 cpu原子指令: lock , 一般在别的指令前加 
 
+![cacheLine](images/cacheLine.png)
 
+![MESI](images/MESI.png)
+
+![BusLock](images/BusLock.png)
 
 JVM层级
 
@@ -304,7 +363,7 @@ synchronized实现细节:
 
 ![Snipaste_2020-12-21_23-02-42](images/Snipaste_2020-12-21_23-02-42.png)
 
-
+![Snipaste_2020-12-21_23-02-52](images/Snipaste_2020-12-21_23-02-52.png)
 
 
 
@@ -342,6 +401,8 @@ while(not end){
 
 
 
+方法中bytecode中的表示: 局部变量表 + 字节码 + 杂项 + 异常表 ;  字节码将数据 在局部变量表和操作数栈中进行操作.
+
 虚拟机栈:
 
 栈帧: 局部变量 + 操作数栈 + 动态链接 + 返回地址
@@ -364,3 +425,28 @@ invoke_interface: 通过 interface 调用
 
 invoke_dynamic: lamda表达式中会使用,反射/其他动态语言,动态产生的class会用到此指令,lambda会产生很多动态类
 
+
+
+部分字节码解释:
+
+load  将 数据 从 本地变量表 压入 栈
+
+store 将 数据 从 栈 弹出 并赋值到 本地变量表
+
+push 是将  常量 压入 栈 
+
+getField 将引用 弹出栈  并将 field值获取到并压入栈
+
+add/multi/xxx 是将两个数弹出栈做完运算后将结果鸭压入栈
+
+ldc 将常量池的数据压入栈
+
+方法执行 invoke_xxx  过程是 将方法所属类引用 ,所需参数 弹出栈 并新启一个栈帧 来执行
+
+![JVMStack](images/JVMStack.png)
+
+
+
+
+
+![Snipaste_2020-12-22_13-51-12](images/Snipaste_2020-12-22_13-51-12.png)
