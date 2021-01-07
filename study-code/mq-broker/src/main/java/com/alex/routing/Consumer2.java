@@ -11,6 +11,7 @@ import java.io.IOException;
  * @date 2020/12/14
  */
 public class Consumer2 {
+
     public static void main(String[] args) throws IOException {
         Connection connection = RabbitMqUtils.getConn();
         Channel channel = connection.createChannel();

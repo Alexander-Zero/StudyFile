@@ -50,7 +50,15 @@ redis命名:
  redis-check-dump    rdb文件检查工具
 ```
 
-​	
+​	windons后台启动redis
+
+```
+redis-server --service-start
+5.停止服务
+`redis-server --service-stop （停止服务）
+6.指定的配置文件启动redis
+`redis-server --service-start redis.windows-service.conf
+```
 
 
 
