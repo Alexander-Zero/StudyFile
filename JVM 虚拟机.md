@@ -190,12 +190,6 @@ Java执行过程的三种模式
 
 
 
-new 关键字步骤
-
-1.申请内存空间(赋默认值), 2.赋初始值
-
-
-
 ### JMM  Java Memory Model  java内存模型
 
 ![Snipaste_2020-12-19_22-47-14](images/Snipaste_2020-12-19_22-47-14.png)
@@ -206,4 +200,167 @@ new 关键字步骤
 
 2.缓存一致性协议 (MESI --> 应用于缓存行)
 
-缓存行: 为提高效率, 按整行读取
+缓存行: 为提高效率, 按整行读取,一般64字节
+
+cpu乱序执行: cpu为提高效率,会在一条指令执行过程中去同时执行另一条指令,前提是两条指令无依赖关系(主要原因是cpu读取速度比内存快100倍)
+
+合并写: wcBuffer, 介于L1与CPU之间
+
+
+
+#### 有序性保障
+
+硬件层面(x86):
+
+CPU内存屏障 
+
+sfence (save fence):  sfence前后的写操作不能重排
+
+lfence (load fence): lfence前后读前后不能重排
+
+mfence: mfence前后的读写操作都不能重排
+
+cpu原子指令: lock , 一般在别的指令前加 
+
+
+
+JVM层级
+
+四种屏障:
+
+loadload ,  storestore,  loadstore , storeload
+
+
+
+volatile实现细节:
+
+1.字节码层级: ACC_VOLATILE
+
+2.JVM层面: 操作前后加屏障
+
+3.OS和硬件层面:  Linux看具体的虚拟机实现,(可使用hsdis工具查看源码 <--> hotspot Dis Assember ) , windows使用lock指令实现
+
+![image-20210106204856244](images/image-20210106204856244.png)
+
+synchronized实现细节:
+
+1.字节码层面: ACC_SYCHRONIZED 或 moniterenter / moniterexit指令(一个moniterenter和两个moniterexit指令)
+
+2.JVM层面: C/C++调用操作系统提供的同步机制
+
+3.OS和硬件层面: lock+指令+其他(x86)
+
+
+
+对象内存布局
+
+对象创建过程: 
+
+1.class loading
+
+2.class linking:  (1). verification.  (2).preparation. (3)resolution
+
+3.class intializing
+
+4.申请对象内存
+
+5.成员变量赋默认值
+
+6.调用构造方法<init> : (1). 成员变量顺序赋初始值 (2).执行构造方法语句
+
+
+
+对象在内存中的存储布局
+
+普通对象:
+
+1.对象头(markword 8字节):
+
+2.classPointer指针: -XX: +useCompressedClassPointer (压缩4字节,不压缩8字节)
+
+3.实例数据: (1):基本类型 (2):应用类型: -XX:+useCompressOops (压缩为4字节,不压缩为8字节)
+
+4.padding对齐: 对齐使得对象所占内存为8的倍数
+
+备注: Oops: Ordinary Object Pointers 观察虚拟机参数: java  -XX:+printCommandLineFlags -version
+
+
+
+数组对象:
+
+1.对象头
+
+2.ClassPointer
+
+3.数组长度 4字节
+
+4.数据数据
+
+5.padding对齐
+
+
+
+对象头内容:
+
+![Snipaste_2020-12-21_23-02-42](images/Snipaste_2020-12-21_23-02-42.png)
+
+
+
+
+
+对象定位: 
+
+1.句柄池: 效率低,GC效率高,  引用指向句柄对象, 句柄对象包含两个指针, 一个指向类对象, 一个指向实例对象
+
+2.直接指针: hotspot使用, 效率高,GC效率低, 引用执行实例对象, 实例对象中包含类对象
+
+![image-20210106214329104](images/image-20210106214329104.png)
+
+
+
+对象如何分配
+
+![Snipaste_2020-12-21_23-22-19](images/Snipaste_2020-12-21_23-22-19.png) 
+
+
+
+Java运行时数据区和指令集
+
+Runtime Data Area
+
+PC: 存放指令位置, 线程独有
+
+虚拟机的运行:伪代码
+
+```java
+while(not end){
+	取pc值,找对应指令;
+	执行指令;
+	PC++;
+}
+```
+
+
+
+虚拟机栈:
+
+栈帧: 局部变量 + 操作数栈 + 动态链接 + 返回地址
+
+一个方法对应一个栈帧, 一个虚拟机栈包含多个栈帧
+
+指令集实现方式: 基于栈的指令集 和 基于寄存器
+
+
+
+解析字节码执行方式
+
+invoke_static 静态方法
+
+invoke_virtual 自带多态
+
+invoke_special: 执行可直接定位,不需要多态的方法 private, <init>
+
+invoke_interface: 通过 interface 调用
+
+invoke_dynamic: lamda表达式中会使用,反射/其他动态语言,动态产生的class会用到此指令,lambda会产生很多动态类
+
