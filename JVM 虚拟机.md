@@ -174,10 +174,10 @@ GC tunning: GC调优(分代调优)
 ​	JVM规范未规定何时加载,但规定以下情况必须加载:
 
 	1. new, getStatic , putStatic , invoke_static 指令, 访问final 变量除外
- 	2. java.lang.reflect对类进行反射时调用时
- 	3. 初始化子类, 父类线初始化
- 	4. 虚拟机启动时, 被执行的主类必须初始化
- 	5. 动态语言支持java.lang.invoke.MethodHandle解析结果为Ref_getStatic, Ref_putStaic, ref_invokeStatic的方法句柄时, 该类必须被初始化.
+	2. java.lang.reflect对类进行反射时调用时
+	3. 初始化子类, 父类线初始化
+	4. 虚拟机启动时, 被执行的主类必须初始化
+	5. 动态语言支持java.lang.invoke.MethodHandle解析结果为Ref_getStatic, Ref_putStaic, ref_invokeStatic的方法句柄时, 该类必须被初始化.
 
 ### liking 连接
 
@@ -450,3 +450,61 @@ ldc 将常量池的数据压入栈
 
 
 ![Snipaste_2020-12-22_13-51-12](images/Snipaste_2020-12-22_13-51-12.png)
+
+
+
+
+
+JVM Tunning
+
+查看java命令含义
+
+java -X : 查看-X的命令
+
+
+
+命令:
+
+-Xmn10M  设置新生代大小
+
+-Xms10M 设置最小堆大小
+
+-Xmx10M 设置最大堆大小 (备注: 一般最好将 最小堆大小和最大堆大小设置一样, 不用操作系统去计算什么时候扩容什么时候减少容量)
+
+ -XX:+PrintCommandLineFlags   查看启动参数
+
+-XX:+PrintGC 打印GC内容
+
+在T01_HelloGC中设置启动参数: -Xmn10M -Xms40M -Xmx60M -XX:+PrintCommandLineFlags -XX:+PrintGC
+
+```java
+package com.mashibing.jvm.c5_gc;
+//-XX:+PrintGCDetails -XX:+UseConcMarkSweepGC -XX:+PrintFlagsFinal -XX:+PrintVMOptions -
+public class T01_HelloGC {
+    public static void main(String[] args) {
+		//需要1000M内存,无法分配下
+        for(int i=0; i<10000; i++) {
+            byte[] b = new byte[1024 * 1024];
+        }
+    }
+}
+```
+
+打印日志如下
+
+```
+-XX:InitialHeapSize=20971520 -XX:MaxHeapSize=20971520 -XX:MaxNewSize=10485760 -XX:NewSize=10485760 -XX:+PrintCommandLineFlags -XX:+PrintGC -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:-UseLargePagesIndividualAllocation -XX:+UseParallelGC 
+[GC (Allocation Failure)  1679K->784K(19456K), 0.0010647 secs]
+[GC (Allocation Failure)  784K->800K(19456K), 0.0009715 secs]
+[Full GC (Allocation Failure)  800K->594K(19456K), 0.0034400 secs]
+[GC (Allocation Failure)  594K->594K(19456K), 0.0002646 secs]
+[Full GC (Allocation Failure)  594K->577K(19456K), 0.0045077 secs]
+
+GC/Full GC : GC类型还是YGC还是FullGC
+(Allocation Failure) : 原因, 分配失败
+1679K -> 784K(19456K) 8167K回收前内存, 752K回收后内存,19456K总的堆内存
+0.0006316 secs 耗时
+
+
+```
+
