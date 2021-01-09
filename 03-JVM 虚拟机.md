@@ -473,6 +473,10 @@ java -X : 查看-X的命令
 
  -XX:+PrintCommandLineFlags   查看启动参数
 
+-XX:+PrintFlagsInitial 打印所有初始参数
+
+-XX:+PrintFlagsFinal 打印所有最终参数  查看参数命令: java -XX:PrintFlagsFinal | grep GC
+
 -XX:+PrintGC 打印GC内容
 
 在T01_HelloGC中设置启动参数: -Xmn10M -Xms40M -Xmx60M -XX:+PrintCommandLineFlags -XX:+PrintGC
@@ -490,7 +494,7 @@ public class T01_HelloGC {
 }
 ```
 
-打印日志如下
+打印日志(-XX:+PrintGC)
 
 ```
 -XX:InitialHeapSize=20971520 -XX:MaxHeapSize=20971520 -XX:MaxNewSize=10485760 -XX:NewSize=10485760 -XX:+PrintCommandLineFlags -XX:+PrintGC -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:-UseLargePagesIndividualAllocation -XX:+UseParallelGC 
@@ -504,7 +508,35 @@ GC/Full GC : GC类型还是YGC还是FullGC
 (Allocation Failure) : 原因, 分配失败
 1679K -> 784K(19456K) 8167K回收前内存, 752K回收后内存,19456K总的堆内存
 0.0006316 secs 耗时
+```
 
+打印日志(-XX:+PrintGCDetails -XX:+UseConcMarkSweepGC)
 
+```
+[root@iZayh0sefq8i9iZ app]# java -Xmn10M -Xms40M -Xmx60M -XX:+PrintCommandLineFlags -XX:+PrintGCDetails -XX:+UseConcMarkSweepGC HelloGC 
+-XX:InitialHeapSize=41943040 -XX:MaxHeapSize=62914560 -XX:MaxNewSize=10485760 -XX:MaxTenuringThreshold=6 -XX:NewSize=10485760 -XX:OldPLABSize=16 -XX:+PrintCommandLineFlags -XX:+PrintGCDetails -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseConcMarkSweepGC -XX:+UseParNewGC 
+HelloGC!
+[GC (Allocation Failure) [ParNew: 7675K->260K(9216K), 0.0042564 secs] 7675K->7430K(39936K), 0.0042903 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+[GC (Allocation Failure) [ParNew: 7590K->390K(9216K), 0.0036086 secs] 14760K->14728K(39936K), 0.0036331 secs] [Times: user=0.00 sys=0.01, real=0.01 secs] 
+[GC (Allocation Failure) [ParNew: 7712K->481K(9216K), 0.0030846 secs] 22050K->21988K(39936K), 0.0031062 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+[GC (Allocation Failure) [ParNew: 7805K->312K(9216K), 0.0036817 secs] 29312K->28986K(39936K), 0.0037126 secs] [Times: user=0.01 sys=0.00, real=0.00 secs] 
+[GC (Allocation Failure) [ParNew: 7638K->462K(9216K), 0.0040245 secs] 36312K->36305K(46104K), 0.0040475 secs] [Times: user=0.00 sys=0.00, real=0.01 secs] 
+[GC (Allocation Failure) [ParNew: 7789K->307K(9216K), 0.0049889 secs] 43631K->43318K(53300K), 0.0050127 secs] [Times: user=0.00 sys=0.01, real=0.00 secs] 
+[GC (Allocation Failure) [ParNew (promotion failed): 7635K->7558K(9216K), 0.0056199 secs][CMS: 49406K->49404K(50252K), 0.0104050 secs] 50645K->50435K(59468K), [Metaspace: 2504K->2504K(1056768K)], 0.0162334 secs] [Times: user=0.01 sys=0.00, real=0.02 secs] 
+[GC (Allocation Failure) [ParNew: 7335K->7335K(9216K), 0.0000141 secs][CMS: 49404K->50436K(51200K), 0.0030010 secs] 56739K->56580K(60416K), [Metaspace: 2504K->2504K(1056768K)], 0.0030447 secs] [Times: user=0.01 sys=0.00, real=0.01 secs] 
+[Full GC (Allocation Failure) [CMS: 50436K->50436K(51200K), 0.0011270 secs] 57604K->57604K(60416K), [Metaspace: 2504K->2504K(1056768K)], 0.0011491 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+[Full GC (Allocation Failure) [CMS: 50436K->50424K(51200K), 0.0022217 secs] 57604K->57592K(60416K), [Metaspace: 2504K->2504K(1056768K)], 0.0022403 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at HelloGC.main(HelloGC.java:9)
+Heap
+ par new generation   total 9216K, used 7484K [0x00000000fc400000, 0x00000000fce00000, 0x00000000fce00000)
+  eden space 8192K,  91% used [0x00000000fc400000, 0x00000000fcb4f0e8, 0x00000000fcc00000)
+  from space 1024K,   0% used [0x00000000fcd00000, 0x00000000fcd00000, 0x00000000fce00000)
+  to   space 1024K,   0% used [0x00000000fcc00000, 0x00000000fcc00000, 0x00000000fcd00000)
+ concurrent mark-sweep generation total 51200K, used 50424K [0x00000000fce00000, 0x0000000100000000, 0x0000000100000000)
+ Metaspace       used 2535K, capacity 4486K, committed 4864K, reserved 1056768K
+  class space    used 272K, capacity 386K, committed 512K, reserved 1048576K
+  
+  备注:user用户态,sys系统态 [0x00000000fc400000, 0x00000000fce00000, 0x00000000fce00000) 分别为 开始地址,使用结束地址, 总结束地址
 ```
 

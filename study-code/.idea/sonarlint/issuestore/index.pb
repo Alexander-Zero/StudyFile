@@ -37,3 +37,5 @@ c
 3mq-broker/src/main/java/com/alex/RabbitMqUtils.java,6\b\6b9aaa9a1e040f62a8444593cd08ab81fd761aad
 g
 7mq-broker/src/main/java/com/alex/routing/Consumer1.java,6\9\696be035ddf4328a7c9de979272c9df752b8e161
+g
+7jvm/src/main/java/com/alex/zero/jvm/JvmApplication.java,2\a\2a45e07be42be24527fe86e3db6e64cde860e80a
