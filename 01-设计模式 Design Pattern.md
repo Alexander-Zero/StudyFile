@@ -193,7 +193,7 @@ public class Main extends Frame {
 
 1.3.2 UML类图
 
-![Builder](C:\Users\AlexanderZero\Desktop\Builder.png)
+![Builder](images/Builder.png)
 
 1.3.3 代码
 
@@ -392,7 +392,7 @@ public enum Singleton3 {
 
 #### 		2.1.2 UML图
 
-![Adaptor](C:\Users\AlexanderZero\Desktop\Adaptor.png)
+![Adaptor](images/Adaptor.png)
 
 #### 		2.1.3 
 
@@ -402,7 +402,7 @@ public enum Singleton3 {
 
 UML
 
-![Bridge](C:\Users\AlexanderZero\Desktop\Bridge.png)
+![Bridge](images/Bridge.png)
 
 #### 	代码
 
@@ -566,7 +566,7 @@ public class FilterObject {
 
 UML图
 
-![Command](C:\Users\AlexanderZero\Desktop\Command.png)
+![Command](images/Command.png)
 
 代码
 
@@ -689,7 +689,7 @@ public class MainCommand {
 
 UML
 
-![iterator](C:\Users\AlexanderZero\Desktop\iterator.png)
+![iterator](images/iterator.png)
 
 ### 3.6 Mediator (调停者)
 
@@ -798,7 +798,7 @@ public class TankFrame extends Frame {
 
 #### UML图
 
-![clipboard](C:\Users\AlexanderZero\Desktop\observer.png)
+![clipboard](images/observer.png)
 
 #### 代码
 
