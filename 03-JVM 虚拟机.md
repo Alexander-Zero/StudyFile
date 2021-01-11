@@ -624,11 +624,6 @@ jstat -gc pid time
 
  S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT   
 6784.0 6784.0  0.0   6784.0 54656.0  54656.0   136576.0   136576.0  4864.0 3858.2 512.0  420.1      14    0.589 3448  2255.605 2256.194
-6784.0 6784.0  0.0   6784.0 54656.0  54656.0   136576.0   136576.0  4864.0 3858.2 512.0  420.1      14    0.589 3449  2256.487 2257.076
-6784.0 6784.0  0.0   6778.7 54656.0  54656.0   136576.0   136576.0  4864.0 3858.2 512.0  420.1      14    0.589 3449  2257.142 2257.731
-6784.0 6784.0  0.0   6775.3 54656.0  54656.0   136576.0   136576.0  4864.0 3858.2 512.0  420.1      14    0.589 3450  2257.770 2258.359
-6784.0 6784.0  0.0   6784.0 54656.0  54656.0   136576.0   136576.0  4864.0 3858.2 512.0  420.1      14    0.589 3451  2257.770 2258.359
-
 备注: S0C S1C 含义???```````````````````````
 
 ```
@@ -645,21 +640,6 @@ jmap -histo pid | head -20
    1:       1975400      142228800  java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask
    2:       1975426       79017040  java.math.BigDecimal
    3:       1975400       63212800  T15_FullGC_Problem01$CardInfo
-   4:       1975401       47409624  java.util.Date
-   5:       1975400       47409600  java.util.concurrent.Executors$RunnableAdapter
-   6:       1975400       31606400  T15_FullGC_Problem01$$Lambda$15/1688376486
-   7:             2        8088000  [Ljava.util.concurrent.RunnableScheduledFuture;
-   8:        109730        3511360  java.util.concurrent.locks.AbstractQueuedSynchronizer$Node
-   9:           970        1063480  [I
-  10:          4231         300688  [C
-  11:          2178         196224  [Ljava.lang.Object;
-  12:          1655         187512  java.lang.Class
-  13:          4211         101064  java.lang.String
-  14:           424          37312  java.lang.reflect.Method
-  15:            32          37096  [B
-  16:           691          22112  java.util.HashMap$Node
-  17:            58          21808  java.lang.Thread
-
 ```
 
 
@@ -1145,9 +1125,15 @@ OOM产生的原因多种多样,有时不产生OOM,但频繁FGC(CPU 飙高,内存
 
 解决方案: 更换垃圾回收器 PN + CMS 或 G1 
 
-### 2.线程池不当运用参数OOM问题
+#### 2.线程池不当运用参数OOM问题
 
-具体原因不清楚???
+
+
+原因: 使用ScheduledThreadPoolExecutor 去执行不要返回值的 方法, 并且没有调用 ScheduledFuture.get() 方法, 导致 线程池中workQueue 数量无限增加, 且workQueue中数据能被 线程池引用到, 无法清除.
+
+解决方案: 1.换用不需要返回值的线程池来执行,  2.若要是现有线程池, 调用方法后记得 获取 ScheduledFuthure 对象, 并在代码中调用 ScheduleFuture.get() 达到在executor的workQueue 删除该任务.
+
+
 
 3.
 
@@ -1167,11 +1153,11 @@ G1思想: 分而治之
 
 G1四个逻辑分区: Eden, Survivor, Old ,  Humongous(大对象区)
 
-Card Table: 
+Card Table:  GC 会将内存分为一个一个的Card,类似与缓存行, 512字节, YGC时, 存在Old区对象指向Young区, 若回收,需扫描整个Old区,效率低, 为提高效率, 为Old区建一个Card Table(位图), 若有Card中有对象指向Young区, 标记为Dirty(位图 1), MinorGC时可通过Card Table的来确定要扫描Old区中那些Card.
 
-CSet:
+CSet: Collection Set, G1中需要回收的Region集合.
 
-RSet: 
+RSet: Remember Set, G1 Region中用一个Set来记录 Region中有哪些对象 被其他对象所引用, 垃圾回收时不用扫描整个Region, 只需扫描RSet即可确定哪些是垃圾
 
 新老年代比例: 为动态, 默认5% -60%, 可参数设置, 根据响应时间动态调整
 
@@ -1222,6 +1208,8 @@ G1三个回收阶段:
 
 
 CMS日志:
+
+
 
 G1日志:
 
