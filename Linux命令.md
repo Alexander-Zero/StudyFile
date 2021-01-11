@@ -16,6 +16,14 @@
 
 
 
+复制
+
+远程复制: 
+
+scp username@hostname:filepath  filepath
+
+
+
 查找文件/文件夹
 
 whereis

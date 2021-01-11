@@ -1,5 +1,5 @@
 ---
-
+''
 ---
 
 # JVM 虚拟机 
@@ -479,6 +479,8 @@ java -X : 查看-X的命令
 
 -XX:+PrintGC 打印GC内容
 
+-XX:+HeapDumpOnOutOfMemoryError 
+
 在T01_HelloGC中设置启动参数: -Xmn10M -Xms40M -Xmx60M -XX:+PrintCommandLineFlags -XX:+PrintGC
 
 ```java
@@ -540,3 +542,689 @@ Heap
   备注:user用户态,sys系统态 [0x00000000fc400000, 0x00000000fce00000, 0x00000000fce00000) 分别为 开始地址,使用结束地址, 总结束地址
 ```
 
+
+
+jinfo pid
+
+```
+[root@iZayh0sefq8i9iZ app]# jinfo 5896 //命令执行行
+
+
+Attaching to process ID 5896, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 25.271-b09
+Java System Properties:
+
+java.runtime.name = Java(TM) SE Runtime Environment
+java.vm.version = 25.271-b09
+sun.boot.library.path = /usr/local/jdk/jre/lib/amd64
+java.vendor.url = http://java.oracle.com/
+java.vm.vendor = Oracle Corporation
+path.separator = :
+file.encoding.pkg = sun.io
+java.vm.name = Java HotSpot(TM) 64-Bit Server VM
+sun.os.patch.level = unknown
+sun.java.launcher = SUN_STANDARD
+user.country = US
+user.dir = /usr/local/app
+java.vm.specification.name = Java Virtual Machine Specification
+java.runtime.version = 1.8.0_271-b09
+java.awt.graphicsenv = sun.awt.X11GraphicsEnvironment
+os.arch = amd64
+java.endorsed.dirs = /usr/local/jdk/jre/lib/endorsed
+java.io.tmpdir = /tmp
+line.separator = 
+
+java.vm.specification.vendor = Oracle Corporation
+os.name = Linux
+sun.jnu.encoding = UTF-8
+java.library.path = /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+java.specification.name = Java Platform API Specification
+java.class.version = 52.0
+sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+os.version = 4.18.0-193.28.1.el8_2.x86_64
+user.home = /root
+user.timezone = 
+java.awt.printerjob = sun.print.PSPrinterJob
+file.encoding = UTF-8
+java.specification.version = 1.8
+user.name = root
+java.class.path = .:/usr/local/jdk/lib/dt.jar:/usr/local/jdk/lib/tools.jar
+java.vm.specification.version = 1.8
+sun.arch.data.model = 64
+sun.java.command = T15_FullGC_Problem01
+java.home = /usr/local/jdk/jre
+user.language = en
+java.specification.vendor = Oracle Corporation
+awt.toolkit = sun.awt.X11.XToolkit
+java.vm.info = mixed mode
+java.version = 1.8.0_271
+java.ext.dirs = /usr/local/jdk/jre/lib/ext:/usr/java/packages/lib/ext
+sun.boot.class.path = /usr/local/jdk/jre/lib/resources.jar:/usr/local/jdk/jre/lib/rt.jar:/usr/local/jdk/jre/lib/sunrsasign.jar:/usr/local/jdk/jre/lib/jsse.jar:/usr/local/jdk/jre/lib/jce.jar:/usr/local/jdk/jre/lib/charsets.jar:/usr/local/jdk/jre/lib/jfr.jar:/usr/local/jdk/jre/classes
+java.vendor = Oracle Corporation
+file.separator = /
+java.vendor.url.bug = http://bugreport.sun.com/bugreport/
+sun.io.unicode.encoding = UnicodeLittle
+sun.cpu.endian = little
+sun.cpu.isalist = 
+
+VM Flags:
+Non-default VM flags: -XX:CICompilerCount=2 -XX:InitialHeapSize=209715200 -XX:MaxHeapSize=209715200 -XX:MaxNewSize=69861376 -XX:MinHeapDeltaBytes=196608 -XX:NewSize=69861376 -XX:OldSize=139853824 -XX:+PrintGC -XX:+UseCompressedClassPointers -XX:+UseCompressedOops 
+Command line:  -Xms200M -Xmx200M -XX:+PrintGC
+
+```
+
+
+
+jstat -gc pid time
+
+```
+[root@iZayh0sefq8i9iZ app]#  jstat -gc 5896 1000 //命令行 
+
+ S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT   
+6784.0 6784.0  0.0   6784.0 54656.0  54656.0   136576.0   136576.0  4864.0 3858.2 512.0  420.1      14    0.589 3448  2255.605 2256.194
+6784.0 6784.0  0.0   6784.0 54656.0  54656.0   136576.0   136576.0  4864.0 3858.2 512.0  420.1      14    0.589 3449  2256.487 2257.076
+6784.0 6784.0  0.0   6778.7 54656.0  54656.0   136576.0   136576.0  4864.0 3858.2 512.0  420.1      14    0.589 3449  2257.142 2257.731
+6784.0 6784.0  0.0   6775.3 54656.0  54656.0   136576.0   136576.0  4864.0 3858.2 512.0  420.1      14    0.589 3450  2257.770 2258.359
+6784.0 6784.0  0.0   6784.0 54656.0  54656.0   136576.0   136576.0  4864.0 3858.2 512.0  420.1      14    0.589 3451  2257.770 2258.359
+
+备注: S0C S1C 含义???```````````````````````
+
+```
+
+
+
+jmap -histo pid | head -20 
+
+```
+[root@iZayh0sefq8i9iZ app]# jmap -histo 7525 | head -20
+
+ num     #instances         #bytes  class name
+----------------------------------------------
+   1:       1975400      142228800  java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask
+   2:       1975426       79017040  java.math.BigDecimal
+   3:       1975400       63212800  T15_FullGC_Problem01$CardInfo
+   4:       1975401       47409624  java.util.Date
+   5:       1975400       47409600  java.util.concurrent.Executors$RunnableAdapter
+   6:       1975400       31606400  T15_FullGC_Problem01$$Lambda$15/1688376486
+   7:             2        8088000  [Ljava.util.concurrent.RunnableScheduledFuture;
+   8:        109730        3511360  java.util.concurrent.locks.AbstractQueuedSynchronizer$Node
+   9:           970        1063480  [I
+  10:          4231         300688  [C
+  11:          2178         196224  [Ljava.lang.Object;
+  12:          1655         187512  java.lang.Class
+  13:          4211         101064  java.lang.String
+  14:           424          37312  java.lang.reflect.Method
+  15:            32          37096  [B
+  16:           691          22112  java.util.HashMap$Node
+  17:            58          21808  java.lang.Thread
+
+```
+
+
+
+jconsole 图形界面
+
+jVisualVM 图形界面
+
+
+
+现有问题:
+
+JMX无法连接
+
+jstack 信息分析 : 一个死锁程序,  一个很多线程等待的程序;
+
+
+
+jhat filename.hprof  分析dump文件
+
+报异常见下代码
+
+```
+[root@iZayh0sefq8i9iZ app]# jhat heapdump.hprof 
+Reading from heapdump.hprof...
+Dump file created Sat Jan 09 23:18:22 CST 2021
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at com.sun.tools.hat.internal.model.Snapshot.makeId(Snapshot.java:586)
+	at com.sun.tools.hat.internal.model.Snapshot.addHeapObject(Snapshot.java:166)
+	at com.sun.tools.hat.internal.parser.HprofReader.readInstance(HprofReader.java:744)
+	at com.sun.tools.hat.internal.parser.HprofReader.readHeapDump(HprofReader.java:491)
+	at com.sun.tools.hat.internal.parser.HprofReader.read(HprofReader.java:238)
+	at com.sun.tools.hat.internal.parser.Reader.readFile(Reader.java:92)
+	at com.sun.tools.hat.Main.main(Main.java:159)
+```
+
+添加参数:
+
+jhat -J-mx20M filename
+
+然后可以通过7000端口访问
+
+下拉框到最后 other , 可看到那个类有多少, 同时也可以通过查询语句来查看信息
+
+如 select s from String s , 具体可见帮助文档了
+
+备注: 现在遇到的问题为 aliyun的那台服务器无法通过远程访问, 本地的可以通过远程访问
+
+
+
+
+
+Arthas
+
+下载: https://github.com/alibaba/arthas/blob/master/README_CN.md
+
+启动: java -jar arthas-boot.jar
+
+备注: 先启动程序, 然后启动Arthas ,  Arthas会给启动的java程序编号, 按编号值进入具体的
+
+
+
+Arthas command
+
+help:  查看有哪些命令
+
+```
+[arthas@8214]$ help
+ NAME         DESCRIPTION                                                                                                                                                                                                                        
+ help         Display Arthas Help                                                                                                                                                                                                                
+ keymap       Display all the available keymap for the specified connection.                                                                                                                                                                     
+ sc           Search all the classes loaded by JVM                                                                                                                                                                                               
+ sm           Search the method of classes loaded by JVM                                                                                                                                                                                         
+ classloader  Show classloader info                                                                                                                                                                                                              
+ jad          Decompile class                                                                                                                                                                                                                    
+ getstatic    Show the static field of a class                                                                                                                                                                                                   
+ monitor      Monitor method execution statistics, e.g. total/success/failure count, average rt, fail rate, etc.                                                                                                                                 
+ stack        Display the stack trace for the specified class and method                                                                                                                                                                         
+ thread       Display thread info, thread stack                                                                                                                                                                                                  
+ trace        Trace the execution time of specified method invocation.                                                                                                                                                                           
+ watch        Display the input/output parameter, return object, and thrown exception of specified method invocation                                                                                                                             
+ tt           Time Tunnel                                                                                                                                                                                                                        
+ jvm          Display the target JVM information                                                                                                                                                                                                 
+ perfcounter  Display the perf counter information.                                                                                                                                                                                              
+ ognl         Execute ognl expression.                                                                                                                                                                                                           
+ mc           Memory compiler, compiles java files into bytecode and class files in memory.                                                                                                                                                      
+ redefine     Redefine classes. @see Instrumentation#redefineClasses(ClassDefinition...)                                                                                                                                                         
+ dashboard    Overview of target jvm's thread, memory, gc, vm, tomcat info.                                                                                                                                                                      
+ dump         Dump class byte array from JVM                                                                                                                                                                                                     
+ heapdump     Heap dump                                                                                                                                                                                                                          
+ options      View and change various Arthas options                                                                                                                                                                                             
+ cls          Clear the screen                                                                                                                                                                                                                   
+ reset        Reset all the enhanced classes                                                                                                                                                                                                     
+ version      Display Arthas version                                                                                                                                                                                                             
+ session      Display current session information                                                                                                                                                                                                
+ sysprop      Display, and change the system properties.                                                                                                                                                                                         
+ sysenv       Display the system env.                                                                                                                                                                                                            
+ vmoption     Display, and update the vm diagnostic options.                                                                                                                                                                                     
+ logger       Print logger info, and update the logger level                                                                                                                                                                                     
+ history      Display command history                                                                                                                                                                                                            
+ cat          Concatenate and print files                                                                                                                                                                                                        
+ echo         write arguments to the standard output                                                                                                                                                                                             
+ pwd          Return working directory name                                                                                                                                                                                                      
+ mbean        Display the mbean information                                                                                                                                                                                                      
+ grep         grep command for pipes.                                                                                                                                                                                                            
+ tee          tee command for pipes.                                                                                                                                                                                                             
+ profiler     Async Profiler. https://github.com/jvm-profiling-tools/async-profiler                                                                                                                                                              
+ stop         Stop/Shutdown Arthas server and exit the console.    
+```
+
+jvm : 信息类似  jinfo
+
+```
+[arthas@8214]$ jvm
+ RUNTIME                                                                                                                                                                                                                                         
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ MACHINE-NAME                                                         8214@iZayh0sefq8i9iZ                                                                                                                                                       
+ JVM-START-TIME                                                       2021-01-09 22:46:51                                                                                                                                                        
+ MANAGEMENT-SPEC-VERSION                                              1.2                                                                                                                                                                        
+ SPEC-NAME                                                            Java Virtual Machine Specification                                                                                                                                         
+ SPEC-VENDOR                                                          Oracle Corporation                                                                                                                                                         
+ SPEC-VERSION                                                         1.8                                                                                                                                                                        
+ VM-NAME                                                              Java HotSpot(TM) 64-Bit Server VM                                                                                                                                          
+ VM-VENDOR                                                            Oracle Corporation                                                                                                                                                         
+ VM-VERSION                                                           25.271-b09                                                                                                                                                                 
+ INPUT-ARGUMENTS                                                      -Xms200M                                                                                                                                                                   
+                                                                      -Xmx200M                                                                                                                                                                   
+                                                                      -XX:+PrintGC                                                                                                                                                               
+                                                                                                                                                                                                                                                 
+ CLASS-PATH                                                           .:/usr/local/jdk/lib/dt.jar:/usr/local/jdk/lib/tools.jar                                                                                                                   
+ BOOT-CLASS-PATH                                                      /usr/local/jdk/jre/lib/resources.jar:/usr/local/jdk/jre/lib/rt.jar:/usr/local/jdk/jre/lib/sunrsasign.jar:/usr/local/jdk/jre/lib/jsse.jar:/usr/local/jdk/jre/lib/jce.jar:/u 
+                                                                      sr/local/jdk/jre/lib/charsets.jar:/usr/local/jdk/jre/lib/jfr.jar:/usr/local/jdk/jre/classes                                                                                
+ LIBRARY-PATH                                                         /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib                                                                                                               
+                                                                                                                                                                                                                                                 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ CLASS-LOADING                                                                                                                                                                                                                                   
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ LOADED-CLASS-COUNT                                                   3948                                                                                                                                                                       
+ TOTAL-LOADED-CLASS-COUNT                                             3948                                                                                                                                                                       
+ UNLOADED-CLASS-COUNT                                                 0                                                                                                                                                                          
+ IS-VERBOSE                                                           false                                                                                                                                                                      
+                                                                                                                                                                                                                                                 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ COMPILATION                                                                                                                                                                                                                                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ NAME                                                                 HotSpot 64-Bit Tiered Compilers                                                                                                                                            
+ TOTAL-COMPILE-TIME                                                   2829                                                                                                                                                                       
+ [time (ms)]                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ GARBAGE-COLLECTORS                                                                                                                                                                                                                              
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Copy                                                                 name : Copy                                                                                                                                                                
+ [count/time (ms)]                                                    collectionCount : 11                                                                                                                                                       
+                                                                      collectionTime : 413                                                                                                                                                       
+                                                                                                                                                                                                                                                 
+ MarkSweepCompact                                                     name : MarkSweepCompact                                                                                                                                                    
+ [count/time (ms)]                                                    collectionCount : 1                                                                                                                                                        
+                                                                      collectionTime : 157                                                                                                                                                       
+                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ MEMORY-MANAGERS                                                                                                                                                                                                                                 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ CodeCacheManager                                                     Code Cache                                                                                                                                                                 
+                                                                                                                                                                                                                                                 
+ Metaspace Manager                                                    Metaspace                                                                                                                                                                  
+                                                                      Compressed Class Space                                                                                                                                                     
+                                                                                                                                                                                                                                                 
+ Copy                                                                 Eden Space                                                                                                                                                                 
+                                                                      Survivor Space                                                                                                                                                             
+                                                                                                                                                                                                                                                 
+ MarkSweepCompact                                                     Eden Space                                                                                                                                                                 
+                                                                      Survivor Space                                                                                                                                                             
+                                                                      Tenured Gen                                                                                                                                                                
+                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ MEMORY                                                                                                                                                                                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ HEAP-MEMORY-USAGE                                                    init : 209715200(200.0 MiB)                                                                                                                                                
+ [memory in bytes]                                                    used : 176589776(168.4 MiB)                                                                                                                                                
+                                                                      committed : 202768384(193.4 MiB)                                                                                                                                           
+                                                                      max : 202768384(193.4 MiB)                                                                                                                                                 
+                                                                                                                                                                                                                                                 
+ NO-HEAP-MEMORY-USAGE                                                 init : 2555904(2.4 MiB)                                                                                                                                                    
+ [memory in bytes]                                                    used : 30679480(29.3 MiB)                                                                                                                                                  
+                                                                      committed : 31768576(30.3 MiB)                                                                                                                                             
+                                                                      max : -1(-1 B)                                                                                                                                                             
+                                                                                                                                                                                                                                                 
+ PENDING-FINALIZE-COUNT                                               0                                                                                                                                                                          
+                                                                                                                                                                                                                                                 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ OPERATING-SYSTEM                                                                                                                                                                                                                                
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ OS                                                                   Linux                                                                                                                                                                      
+ ARCH                                                                 amd64                                                                                                                                                                      
+ PROCESSORS-COUNT                                                     1                                                                                                                                                                          
+ LOAD-AVERAGE                                                         0.12                                                                                                                                                                       
+ VERSION                                                              4.18.0-193.28.1.el8_2.x86_64                                                                                                                                               
+                                                                                                                                                                                                                                                 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ THREAD                                                                                                                                                                                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ COUNT                                                                64                                                                                                                                                                         
+ DAEMON-COUNT                                                         13                                                                                                                                                                         
+ PEAK-COUNT                                                           64                                                                                                                                                                         
+ STARTED-COUNT                                                        67                                                                                                                                                                         
+ DEADLOCK-COUNT                                                       0                                                                                                                                                                          
+                                                                                                                                                                                                                                                 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ FILE-DESCRIPTOR                                                                                                                                                                                                                                 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ MAX-FILE-DESCRIPTOR-COUNT                                            65535                                                                                                                                                                      
+ OPEN-FILE-DESCRIPTOR-COUNT                                           49                                                                                                                                                                         
+ 
+```
+
+
+
+
+
+thread 线程信息
+
+```
+[arthas@8214]$ thread
+Threads Total: 69, NEW: 0, RUNNABLE: 7, BLOCKED: 0, WAITING: 53, TIMED_WAITING: 4, TERMINATED: 0, Internal threads: 5                                                                                                                            
+ID        NAME                                                        GROUP                         PRIORITY             STATE               %CPU                DELTA_TIME          TIME                INTERRUPTED         DAEMON              
+25        pool-1-thread-18                                            main                          5                    TIMED_WAITING       12.84               0.026               0:1.676             false               false               
+71        arthas-command-execute                                      system                        5                    RUNNABLE            0.54                0.001               0:0.106             false               true                
+56        pool-1-thread-49                                            main                          5                    WAITING             0.39                0.000               0:1.003             false               false               
+9         pool-1-thread-2                                             main                          5                    WAITING             0.38                0.000               0:2.849             false               false               
+23        pool-1-thread-16                                            main                          5                    WAITING             0.3                 0.000               0:10.672            false               false               
+12        pool-1-thread-5                                             main                          5                    WAITING             0.27                0.000               0:1.101             false               false               
+53        pool-1-thread-46                                            main                          5                    WAITING             0.26                0.000               0:1.056             false               false               
+11        pool-1-thread-4                                             main                          5                    WAITING             0.25                0.000               0:1.061             false               false               
+47        pool-1-thread-40                                            main                          5                    WAITING             0.25                0.000               0:1.088             false               false               
+8         pool-1-thread-1                                             main                          5                    WAITING             0.24                0.000               0:1.586             false               false               
+10        pool-1-thread-3                                             main                          5                    WAITING             0.24                0.000               0:1.032             false               false               
+33        pool-1-thread-26                                            main                          5                    WAITING             0.24                0.000               0:3.472             false               false               
+57        pool-1-thread-50                                            main                          5                    WAITING             0.23                0.000               0:1.049             false               false               
+13        pool-1-thread-6                                             main                          5                    WAITING             0.23                0.000               0:1.043             false               false               
+38        pool-1-thread-31                                            main                          5                    WAITING             0.23                0.000               0:13.565            false               false               
+14        pool-1-thread-7                                             main                          5                    WAITING             0.22                0.000               0:1.058             false               false               
+20        pool-1-thread-13                                            main                          5                    WAITING             0.22                0.000               0:1.100             false               false               
+16        pool-1-thread-9                                             main                          5                    WAITING             0.21                0.000               0:1.044             false               false               
+18        pool-1-thread-11                                            main                          5                    WAITING             0.21                0.000               0:1.064             false               false               
+17        pool-1-thread-10                                            main                          5                    WAITING             0.21                0.000               0:1.045             false               false               
+31        pool-1-thread-24                                            main                          5                    WAITING             0.2                 0.000               0:1.043             false               false               
+22        pool-1-thread-15                                            main                          5                    WAITING             0.2                 0.000               0:1.045             false               false               
+52        pool-1-thread-45                                            main                          5                    WAITING             0.2                 0.000               0:1.040             false               false               
+15        pool-1-thread-8                                             main                          5                    WAITING             0.2                 0.000               0:1.022             false               false               
+21        pool-1-thread-14                                            main                          5                    WAITING             0.2                 0.000               0:1.062             false               false               
+19        pool-1-thread-12                                            main                          5                    WAITING             0.2                 0.000               0:2.589             false               false               
+41        pool-1-thread-34                                            main                          5                    WAITING             0.2                 0.000               0:1.322             false               false               
+32        pool-1-thread-25                                            main                          5                    WAITING             0.2                 0.000               0:1.044             false               false               
+49        pool-1-thread-42                                            main                          5                    WAITING             0.2                 0.000               0:1.077             false               false               
+28        pool-1-thread-21                                            main                          5                    WAITING             0.2                 0.000               0:1.067             false               false               
+26        pool-1-thread-19                                            main                          5                    WAITING             0.2                 0.000               0:1.063             false               false               
+34        pool-1-thread-27                                            main                          5                    WAITING             0.2                 0.000               0:1.081             false               false               
+27        pool-1-thread-20                                            main                          5                    WAITING             0.2                 0.000               0:1.121             false               false               
+46        pool-1-thread-39                                            main                          5                    WAITING             0.2                 0.000               0:2.442             false               false               
+30        pool-1-thread-23                                            main                          5                    WAITING             0.2                 0.000               0:1.059             false               false               
+48        pool-1-thread-41                                            main                          5                    WAITING             0.19                0.000               0:1.055             false               false               
+54        pool-1-thread-47                                            main                          5                    WAITING             0.19                0.000               0:1.033             false               false               
+39        pool-1-thread-32                                            main                          5                    WAITING             0.19                0.000               0:1.062             false               false               
+51        pool-1-thread-44                                            main                          5                    WAITING             0.19                0.000               0:1.021             false               false               
+29        pool-1-thread-22                                            main                          5                    WAITING             0.19                0.000               0:1.042             false               false               
+45        pool-1-thread-38                                            main                          5                    WAITING             0.19                0.000               0:1.071             false               false               
+50        pool-1-thread-43                                            main                          5                    WAITING             0.19                0.000               0:1.040             false               false               
+24        pool-1-thread-17                                            main                          5                    WAITING             0.19                0.000               0:1.048             false               false               
+37        pool-1-thread-30                                            main                          5                    WAITING             0.19                0.000               0:1.036             false               false               
+44        pool-1-thread-37                                            main                          5                    WAITING             0.19                0.000               0:1.043             false               false               
+42        pool-1-thread-35                                            main                          5                    WAITING             0.19                0.000               0:1.071             false               false               
+43        pool-1-thread-36                                            main                          5                    WAITING             0.19                0.000               0:8.836             false               false               
+35        pool-1-thread-28                                            main                          5                    WAITING             0.19                0.000               0:1.018             false               false               
+40        pool-1-thread-33                                            main                          5                    WAITING             0.19                0.000               0:1.035             false               false               
+36        pool-1-thread-29                                            main                          5                    WAITING             0.18                0.000               0:1.576             false               false               
+-1        C1 CompilerThread1                                          -                             -1                   -                   0.15                0.000               0:0.674             false               true                
+55        pool-1-thread-48                                            main                          5                    WAITING             0.14                0.000               0:1.013             false               false               
+1         main                                                        main                          5                    TIMED_WAITING       0.03                0.000               0:0.447             false               false     
+```
+
+thread threadId
+
+```
+[arthas@8214]$ thread 25
+"pool-1-thread-18" Id=25 WAITING on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@1a98c651
+    at sun.misc.Unsafe.park(Native Method)
+    -  waiting on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@1a98c651
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1088)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+    at java.lang.Thread.run(Thread.java:748)
+
+```
+
+
+
+dashboard
+
+```
+ID        NAME                                                        GROUP                         PRIORITY             STATE               %CPU                DELTA_TIME          TIME                INTERRUPTED         DAEMON              
+46        pool-1-thread-39                                            main                          5                    TIMED_WAITING       3.19                0.159               0:2.421             false               false               
+-1        C2 CompilerThread0                                          -                             -1                   -                   1.02                0.051               0:1.579             false               true                
+17        pool-1-thread-10                                            main                          5                    WAITING             0.15                0.007               0:0.121             false               false               
+53        pool-1-thread-46                                            main                          5                    WAITING             0.15                0.007               0:0.118             false               false               
+9         pool-1-thread-2                                             main                          5                    WAITING             0.14                0.007               0:0.123             false               false               
+18        pool-1-thread-11                                            main                          5                    WAITING             0.14                0.007               0:0.117             false               false               
+28        pool-1-thread-21                                            main                          5                    WAITING             0.13                0.006               0:0.112             false               false               
+41        pool-1-thread-34                                            main                          5                    WAITING             0.13                0.006               0:0.123             false               false               
+32        pool-1-thread-25                                            main                          5                    WAITING             0.13                0.006               0:0.115             false               false               
+22        pool-1-thread-15                                            main                          5                    WAITING             0.13                0.006               0:0.124             false               false               
+33        pool-1-thread-26                                            main                          5                    WAITING             0.13                0.006               0:0.123             false               false               
+8         pool-1-thread-1                                             main                          5                    WAITING             0.13                0.006               0:0.201             false               false               
+12        pool-1-thread-5                                             main                          5                    WAITING             0.13                0.006               0:0.121             false               false               
+19        pool-1-thread-12                                            main                          5                    WAITING             0.13                0.006               0:0.117             false               false               
+36        pool-1-thread-29                                            main                          5                    WAITING             0.13                0.006               0:0.126             false               false               
+56        pool-1-thread-49                                            main                          5                    WAITING             0.13                0.006               0:0.121             false               false               
+29        pool-1-thread-22                                            main                          5                    WAITING             0.13                0.006               0:0.114             false               false               
+38        pool-1-thread-31                                            main                          5                    WAITING             0.13                0.006               0:0.121             false               false               
+43        pool-1-thread-36                                            main                          5                    WAITING             0.13                0.006               0:0.120             false               false               
+11        pool-1-thread-4                                             main                          5                    WAITING             0.13                0.006               0:0.117             false               false               
+54        pool-1-thread-47                                            main                          5                    WAITING             0.13                0.006               0:0.112             false               false               
+55        pool-1-thread-48                                            main                          5                    WAITING             0.13                0.006               0:0.116             false               false               
+10        pool-1-thread-3                                             main                          5                    WAITING             0.13                0.006               0:0.120             false               false               
+47        pool-1-thread-40                                            main                          5                    WAITING             0.13                0.006               0:0.120             false               false               
+21        pool-1-thread-14                                            main                          5                    WAITING             0.13                0.006               0:0.118             false               false               
+20        pool-1-thread-13                                            main                          5                    WAITING             0.13                0.006               0:0.114             false               false               
+40        pool-1-thread-33                                            main                          5                    WAITING             0.13                0.006               0:0.115             false               false               
+34        pool-1-thread-27                                            main                          5                    WAITING             0.13                0.006               0:0.117             false               false               
+37        pool-1-thread-30                                            main                          5                    WAITING             0.13                0.006               0:0.121             false               false               
+44        pool-1-thread-37                                            main                          5                    WAITING             0.13                0.006               0:0.116             false               false               
+25        pool-1-thread-18                                            main                          5                    WAITING             0.13                0.006               0:0.119             false               false               
+24        pool-1-thread-17                                            main                          5                    WAITING             0.13                0.006               0:0.114             false               false               
+57        pool-1-thread-50                                            main                          5                    WAITING             0.13                0.006               0:0.117             false               false               
+45        pool-1-thread-38                                            main                          5                    WAITING             0.12                0.006               0:0.117             false               false               
+48        pool-1-thread-41                                            main                          5                    WAITING             0.12                0.006               0:0.117             false               false               
+Memory                                              used             total            max               usage            GC                                                                                                                      
+heap                                                58M              193M             193M              30.14%           gc.copy.count                                               5                                                           
+eden_space                                          9M               53M              53M               18.48%           gc.copy.time(ms)                                            121                                                         
+survivor_space                                      6M               6M               6M                100.00%          gc.marksweepcompact.count                                   1                                                           
+tenured_gen                                         41M              133M             133M              31.33%           gc.marksweepcompact.time(ms)                                54                                                          
+nonheap                                             29M              30M              -1                97.50%                                                                                                                                   
+code_cache                                          5M               5M               240M              2.39%                                                                                                                                    
+metaspace                                           21M              21M              -1                97.45%                                                                                                                                   
+compressed_class_space                              2M               2M               1024M             0.26%                                                                                                                                    
+direct                                              0K               0K               -                 0.00%                                                                                                                                    
+mapped                                              0K               0K               -                 0.00%                                                                                                                                    
+Runtime                                                                                                                                                                                                                                          
+os.name                                                                                                                  Linux                                                                                                                   
+os.version                                                                                                               4.18.0-193.28.1.el8_2.x86_64                                                                                            
+java.version                                                                                                             1.8.0_271                                                                                                               
+java.home                                                                                                                /usr/local/jdk/jre                                                                                                      
+systemload.average                                                                                                       0.35                                                                                                                    
+processors                                                                                                               1                                                                                                                       
+timestamp/uptime                                                                                                         Sat Jan 09 23:11:34 CST 2021/151s                                       
+```
+
+
+
+
+
+heapdum filepath 同 jmap 
+
+备注: filepath 不能有 - 
+
+得到堆转储文件后, 用jhat分析, 或用jvisualVM , 或 MAT也可以
+
+
+
+
+
+jad 反编译
+
+动态代理生产的类的问题定位
+
+第三方的类问题定位
+
+版本问题(自已最新的版本是否被使用)
+
+```
+[arthas@9667]$ jad T15_FullGC_Problem01
+
+ClassLoader:                                                                                                                                                                                                                                     
++-sun.misc.Launcher$AppClassLoader@4e0e2f2a                                                                                                                                                                                                      
+  +-sun.misc.Launcher$ExtClassLoader@4990d51a                                                                                                                                                                                                    
+
+Location:                                                                                                                                                                                                                                        
+/usr/local/app/                                                                                                                                                                                                                                  
+
+/*
+ * Decompiled with CFR.
+ */
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+public class T15_FullGC_Problem01 {
+    private static ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(50, new ThreadPoolExecutor.DiscardOldestPolicy());
+
+    private static void modelFit() {
+        List<CardInfo> list = T15_FullGC_Problem01.getAllCardInfo();
+        list.forEach(cardInfo -> executor.scheduleWithFixedDelay(() -> cardInfo.m(), 2L, 3L, TimeUnit.SECONDS));
+    }
+
+    private static List<CardInfo> getAllCardInfo() {
+        ArrayList<CardInfo> arrayList = new ArrayList<CardInfo>();
+        for (int i = 0; i < 100; ++i) {
+            CardInfo cardInfo = new CardInfo();
+            arrayList.add(cardInfo);
+        }
+        return arrayList;
+    }
+
+    public static void main(String[] arrstring) throws Exception {
+        executor.setMaximumPoolSize(50);
+        while (true) {
+            T15_FullGC_Problem01.modelFit();
+            Thread.sleep(100L);
+        }
+    }
+
+    private static class CardInfo {
+        BigDecimal price = new BigDecimal(0.0);
+        String name = "张三";
+        int age = 5;
+        Date birthdate = new Date();
+
+        private CardInfo() {
+        }
+
+        public void m() {
+        }
+    }
+}
+
+Affect(row-cnt:3) cost in 1123 ms.
+
+```
+
+
+
+redefine 热替换, 现在只能修改方法实现,不能修改方法名,不能修改属性
+
+线上修改后编译为class后, 然后使用redefine
+
+redefine T7T.class 
+
+
+
+sc search class
+
+
+
+watch method
+
+
+
+arthas 无 jmap -histo pid 功能
+
+
+
+### 案例汇总(案例能复现的复现)
+
+OOM产生的原因多种多样,有时不产生OOM,但频繁FGC(CPU 飙高,内存回收比较少)
+
+#### 1.硬件升级反而卡顿
+
+有一个50万PV的资料类网站（从磁盘提取文档到内存）原服务器32位，1.5G 的堆，用户反馈网站比较缓慢，因此公司决定升级，新的服务器为64位，16G 的堆内存，结果用户反馈卡顿十分严重，反而比以前效率更低了
+
+分析: 原服务器(32,1.5G) 较慢原因: 访问多, 产生的问题对象较多,占用内存空间较大,导致经常GC, STW长,响应时间变满
+
+升级后服务器(64, 16G)   更慢原因: 内存变大, heap变大, FGC 时间间隔变长, 但每次FGC 需回收垃圾多, STW变长, 卡顿变严重
+
+解决方案: 更换垃圾回收器 PN + CMS 或 G1 
+
+### 2.线程池不当运用参数OOM问题
+
+具体原因不清楚???
+
+3.
+
+4.lamdba表达式, lamdba表达式每运行一次都会产生一个类, 可能
+
+
+
+
+
+
+
+
+
+G1相对PS 吞吐量降低10% -15%, 响应时间可达到200ms
+
+G1思想: 分而治之
+
+G1四个逻辑分区: Eden, Survivor, Old ,  Humongous(大对象区)
+
+Card Table: 
+
+CSet:
+
+RSet: 
+
+新老年代比例: 为动态, 默认5% -60%, 可参数设置, 根据响应时间动态调整
+
+G1和CMS 调优目标都是尽量不要发生FGC
+
+G1三个回收阶段: 
+
+1.YGC 回收Eden + Survivor 区域
+
+2.MixedGC (回收同CMS, 但最后一步是刷选回收), 包含所有的回收区域
+
+3.FGC 回收所有区域 , JDK11前串行回收, JDK11之后并行回收.
+
+
+
+三色标记算法:
+
+黑色: 自身 + 成员变量均已标记完成 
+
+灰色: 自身标记完成, 成员变量 未标记完成
+
+白色: 未被标记
+
+
+
+漏标发生情况:(下面两种情况同时满足)
+
+1. 黑色 新增 引用指向 白色
+2. 灰色 指向 引用断掉
+
+漏标解决方案:
+
+1. Incremental Update 增量替换,  将黑色变为灰色 , 灰色需重新扫描, 同时也需将其他成员变量再次扫面, 效率偏低, CMS 使用
+2. SATB Snapshot At The Begining. 将灰色 指向 白色的引用 压缩需要扫面的栈, 效率较高, G1使用, 这也是G1使用SATB的原因
+
+
+
+
+
+进程/线程/协程
+
+启用线程: JVM(用户态申请新增线程)  -> Kernel 新增线程 (需消耗大量系统资源 约1M)
+
+启用协程: JVM申请新增协程  , 不用切换到内核态 , 所需资源少. 
+
+
+
+
+
+CMS日志:
+
+G1日志:
+
+
+
+待完善: 
