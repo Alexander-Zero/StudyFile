@@ -18,7 +18,7 @@ yum ? wget?? 源>???
 
 
 
-复制
+**复制**
 
 远程复制: 
 
@@ -26,7 +26,7 @@ scp username@hostname:filepath  filepath
 
 
 
-查找文件/文件夹
+**查找文件/文件夹**
 
 whereis
 
