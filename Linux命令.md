@@ -1,5 +1,239 @@
 # Linux命令
 
+Linux网络配置
+
+网卡文件位置:　cd /etc/sysconfig/network-scripts/   
+
+网卡文件: ifcfg-xxx xxx为网卡名; if -> interface      cfg ->configuration      eth -> etherne(以太网)
+
+有线网卡文件
+
+```apl
+TYPE="Ethernet"
+PROXY_METHOD="none"
+BROWSER_ONLY="no"
+DEFROUTE="yes"
+IPV4_FAILURE_FATAL="no"
+IPV6INIT="yes"
+IPV6_AUTOCONF="yes"
+IPV6_DEFROUTE="yes"
+IPV6_FAILURE_FATAL="no"
+IPV6_ADDR_GEN_MODE="stable-privacy" 
+NAME="enp7s0"                                #
+UUID="2b375401-97ee-400d-a5b7-a761cc06b88b"  #唯一编码
+DEVICE="enp7s0"                              #设备名
+BOOTPROTO="static"  						 #dhcp 表示动态获取IP地址, 为dhcp时不需要填下面信息
+ONBOOT="yes"    							 #设备启动时激活网卡
+IPADDR="192.168.1.120"                       #IP地址
+GATEWAY="192.168.1.1"                        #网关
+NETMASK="255.255.255.0"                      #掩码
+DNS1="192.168.1.1"                           #DNS1
+DNS2="192.168.1.1"                           #DNS2
+```
+
+无线网卡文件(wifi)
+
+```
+ESSID=Zero
+MODE=Managed
+KEY_MGMT=WPA-PSK
+SECURITYMODE=open
+MAC_ADDRESS_RANDOMIZATION=default
+TYPE=Wireless
+PROXY_METHOD=none
+BROWSER_ONLY=no
+BOOTPROTO=static
+IPADDR=192.168.1.120
+GATEWAY=192.168.1.1
+DNS1=221.13.30.242
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=no
+IPV6_ADDR_GEN_MODE=stable-privacy
+NAME=Zero
+UUID=b3f2bde5-b85a-4973-af22-b2f102d9f2da
+ONBOOT=yes
+```
+
+需在当前文件创建key-Zero  备注:Zero为wifi名
+
+```
+WPA_PSK=password
+```
+
+
+
+Linux命令
+
+![image-20210127231428966](images/image-20210127231428966.png)
+
+
+
+当Linux启动后, 客户端通过密码和账号登录进入 bash shell程序, 即我们我们看到的Linux界面, bash shell 将我们输入的 命令 + 参数 交由内核来处理.
+
+Linux命令分为内部和外部命令, 内部命令时bash shell自带的命令, 外部命令时有用户安装的命令
+
+输入命令+参数后执行顺序: 
+
+>1: 输入 command + args , 按下回车键
+>
+>2: type command 判断时外部命令还是内部命令
+>
+>3: 若为内部命令, bash shell 直接运行命令
+>
+>4: 若为外部命令, 去hash 中查找是否有缓存命令执行文件.
+>
+>5: 若hash中无缓存执行文件, 去 PATH 变量所在目录查找命令的可执行文件
+>
+>6: 执行外部命令的可执行文件
+>
+>7: 执行可执行文件时bash shell 交由kernel去执行
+
+type cd  :  查看cd命令时内部还是外部命令
+
+echo $PATH : echo 以标准输出打印,  $PATH 变量名 
+
+man cd : 解释cd 命令的含义及用法 (适用与内部和外部命令,  空格: 向下翻页, b:向上翻页, enter: 向下一行, q: 退出 )
+
+help cd : 解释cd命令的含义及用法 (适用于内部命令), 一般外部用man , 内部用help
+
+hash  : 查询哪些命令在缓存中
+
+file txt  :  查看txt文件类型
+
+whereis txt: 查看txt文件位置
+
+ps -ef :  打印进程信息
+
+ln txt xxoo : 为txt创建xxoo的硬链接, 即 两个文件指向同一磁盘文件
+
+ln -s txt xxoo : 创建软连接 , xxoo -> txt -> 磁盘文件
+
+stat txt : 查看文件详细信息
+
+>modify :  内容最后一次修改时间
+>
+>change : 最后一次修改时间( 内容 + 权限等)
+
+touch txt : 若无txt文件,则创建, 若有, 将access, modify, change时间统一, 可根据此 来查看是否有 增量数据 
+
+
+
+定义变量方式
+
+定义变量: a=1
+
+定义数组: arr=(1 2 3)         空格隔开
+
+打印第一个: echo $arr
+
+打印第二个:echo ${arr[1]} 
+
+$$ : bash shell的pid  , echo $$
+
+$BASHPID : ????	可能于echo $$打印的信息不一样
+
+
+
+
+
+Linux文件系统
+
+> Linux将文件进行抽象, 实现文件与磁盘等设备的解耦
+
+Linux目录结构及含义
+
+>bin : 用户相关命令存放位置
+>
+>sbin : 管理相关命令存放位置
+>
+>boot : 系统启动相关文件
+>
+>dev : 存放设备文件( 鼠标, 键盘,打印机等设备文件 )
+>
+>home :　用户家目录，若由一个zero用户, home下会再创建一个zero文件夹存放zero的相关信息
+>
+>root : 管理员的家目录
+>
+>lib : 库文件( 操作系统和第三方软件库文件存放位置)
+>
+>lib64 :  ???
+>
+>media : 挂载点目录, 移动设备??? 那些时移动设备???
+>
+>mnt : 挂载点目录, 额外的临时文件系统, 如移动硬盘
+>
+>opt : 第三方软件安装目录, 我们平时需要安装的软件应该放这个位置
+>
+>proc : 伪文件系统, 内核映射文件???
+>
+>sys :  伪文件系统, 跟硬件相关属性的映射文件???
+>
+>tmp : 临时文件
+>
+>var : 可变化文件, 如日志,需要处理的日志
+>
+>etc : 
+>
+>usr : 
+>
+>run : 
+
+一般磁盘由boot, swap , 其他, boot存放引导文件, swap交换文件存放位置, 一般将程序存放内存当中, 当需切换进程/线程, 内存空间不能同时存放上一个进程/线程的信息 和 当前执行进程的 信息, 就需将上一个进程 内容 存放到 swap磁盘中, 恢复进程时从磁盘中加载到内存然后执行. 
+
+df -h  /root  :  打印磁盘分区使用相关信息 (tmpfs : swap ; )
+
+du -h  /root : 打印文件夹使用相关信息
+
+ls 或者 ll : 打印文件夹下的文件/文件夹信息 
+
+```
+drwxr-xr-x.  4 root root    34 Dec 27 17:16 src
+lrwxrwxrwx.  1 root root    10 Dec 27 17:16 tmp -> ../var/tmp
+以第一行为例: 
+d    : 文件类型
+rwx  : owner权限
+r-x  : owner'group 权限
+r-x  : other权限
+.    : 分割符
+4    : 引用次数(硬链接)
+root : owner
+root : owner's group
+34   : size (单位k)
+
+文件类型:
+-    : 普通文件
+d    : 文件夹
+l    : 软链接
+b    : 块设备文件(可往前往后移动的读)
+c    : 字符设备(只能读当前, 如键盘)
+p    : pipeline 管道文件
+s    : socket 套接字文件
+
+权限解释:
+w    : write 写
+r    : read 读
+x    : 执行
+-    : ??
+```
+
+ 
+
+文本相关命令
+
+cat xxoo ooxx : 将一个/多个 文件以标准输出形式打印出来
+
+more xxoo : 支持分页(空格, enter), 若看完,则退出,不能回看,往上查看等
+
+less  xxoo : 支持回看(b), 将内容加载到内存
+
+
+
+
+
 yum ? wget?? 源>???
 
 ### 常用命名
