@@ -1,6 +1,6 @@
 # Linux命令
 
-Linux网络配置
+#### Linux网络配置
 
 网卡文件位置:　cd /etc/sysconfig/network-scripts/   
 
@@ -66,7 +66,7 @@ WPA_PSK=password
 
 
 
-Linux命令
+#### bash shell
 
 ![image-20210127231428966](images/image-20210127231428966.png)
 
@@ -120,9 +120,31 @@ stat txt : 查看文件详细信息
 
 touch txt : 若无txt文件,则创建, 若有, 将access, modify, change时间统一, 可根据此 来查看是否有 增量数据 
 
+mv  file1 file2 : 移动/重命名  若file2是文件, 就是重命名
+
+mkdir -p aa/bb : 创建文件夹
+
+rm txt : 删除文件
+
+| 管道 :  man less | tail -5   ,  管道左边作为标准输出  , 管道右边将左边的输出作为标准输入, 即相当于 左边的输出是右边命令的参数
+
+xargs : 配合管道使用, 若右边命令无法接收 左边标准输出的内容, 使用xargs, 如 echo "/" | ls -al 无法打印根目录下的内容, 使用echo "/" | xargs ls -al
 
 
-定义变量方式
+
+#### 文本相关命令
+
+cat xxoo ooxx : 将一个/多个 文件以标准输出形式打印出来
+
+more xxoo : 支持分页(空格, enter), 若看完,则退出,不能回看,往上查看等
+
+less  xxoo : 支持回看(b), 将内容加载到内存(不是全部加载到内存)
+
+head/tail -5 txt : 读取txt前/后 5行, 并打印到标准输出设备上.
+
+
+
+#### 定义变量方式
 
 定义变量: a=1
 
@@ -140,7 +162,7 @@ $BASHPID : ????	可能于echo $$打印的信息不一样
 
 
 
-Linux文件系统
+#### Linux文件系统
 
 > Linux将文件进行抽象, 实现文件与磁盘等设备的解耦
 
@@ -222,13 +244,23 @@ x    : 执行
 
  
 
-文本相关命令
+#### vim 文本编辑器
 
-cat xxoo ooxx : 将一个/多个 文件以标准输出形式打印出来
+模式: 
 
-more xxoo : 支持分页(空格, enter), 若看完,则退出,不能回看,往上查看等
+编辑模式: 不能插入, 但可操作
 
-less  xxoo : 支持回看(b), 将内容加载到内存
+输入模式: 插入文本内容
+
+末行模式: 
+
+ 模式切换: 
+
+编辑 -> 输入 : a(append) 向后追加;  i(insert)向前插入;  o(other)另起一行
+
+输入 -> 编辑 : esc
+
+编辑 -> 末行 : 冒号:
 
 
 
