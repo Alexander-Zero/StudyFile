@@ -358,6 +358,8 @@ x    : 执行
 
 支持变量,函数,控制语句,脚本,非常强大
 
+
+
 #### 用户与权限
 
 用户和组信息保存位置:  /etc/passwd ;  /etc/group
@@ -387,6 +389,46 @@ gid: 初始时的group id
 > 用户: u: root  g: group o: other a: all , 权限: r w x   操作符: +  -  = 
 
 修改用户mode:  usermod -G mtfence alex 将alex 添加到mtfence组中去
+
+切换用户: su alex, 切换到alex用户
+
+切换到root: sudo 
+
+
+
+网页下载:
+
+wget 
+
+#### RPM软件安装
+
+RPM : Redhat Package Management,  安装.rpm文件
+
+rpm -ivh filename  --prefix=dir: 安装软件; i : install, v:     h:    ,  dir: 安装目录
+
+rpm -e packagename :  卸载软件 , e : erasse 
+
+rpm -qa : 查看所有已安装的软件, q: query,  a: all
+
+rpm  -q packagename:  查看指定的包是否安装 q: query
+
+rpm -qi packagename : 查看安装的详细信息 i: install
+
+rpm -ql packagename : 查看安装后生成的文件列表 l : list 
+
+rpm -qc qackagename: 查看安装后生成的配置文件   c : configuration
+
+rpmS
+
+
+
+
+
+Yum源
+
+
+
+
 
 
 
