@@ -108,6 +108,8 @@ file txt  :  查看txt文件类型
 
 whereis txt: 查看txt文件位置
 
+find / -name filename* : 查找文件
+
 ps -ef :  打印进程信息
 
 ln txt xxoo : 为txt创建xxoo的硬链接, 即 两个文件指向同一磁盘文件
@@ -128,6 +130,8 @@ mkdir -p aa/bb : 创建文件夹
 
 rm txt : 删除文件
 
+tar -xzvf xxx.tar.gz : 解压文件, 不同的文件类型参数不一样
+
 | 管道 :  man less | tail -5   ,  管道左边作为标准输出  , 管道右边将左边的输出作为标准输入, 即相当于 左边的输出是右边命令的参数
 
 xargs : 配合管道使用, 若右边命令无法接收 左边标准输出的内容, 使用xargs, 如 echo "/" | ls -al 无法打印根目录下的内容, 使用echo "/" | xargs ls -al
@@ -135,6 +139,8 @@ xargs : 配合管道使用, 若右边命令无法接收 左边标准输出的内
 scp username@hostname:filepath  filepath : 远程复制
 
 grep redis cat txt :  后面接正则表达式 , 打印匹配redis 的行
+
+systemctl start/status/stop/restart firewalld : 开启/关闭/状态/重启 防火墙
 
 正则表达式
 
@@ -151,6 +157,54 @@ more xxoo : 支持分页(空格, enter), 若看完,则退出,不能回看,往上
 less  xxoo : 支持回看(b), 将内容加载到内存(不是全部加载到内存)
 
 head/tail -5 txt : 读取txt前/后 5行, 并打印到标准输出设备上.
+
+ cut -d '=' -f1 CentOS-Base.repo 将CentOS-Base.repo 文件按 = 切分,取第一个变量
+
+>-d : 分隔符 
+>
+>-f : field -> -f1,2 或 -f1-3 
+>
+>-s : 不显示没有分隔符的行
+
+sort  -t " "  -k1 txt :  先将文本按空格切分, 按1列的值排序
+
+>-t  : 分隔符
+>
+>-k : 排序列, 如 -k2
+>
+>-n : 按数字排序
+>
+>-r : 倒序
+>
+>-u : 合并相同行
+>
+>-f :  忽略大小写
+
+wc  CentOS-Base.repo : 统计 
+
+>  61  154 2595 CentOS-Base.repo
+>
+> 61行, 154个单词, 2595字节 
+>
+>-w : word,  -l : line  , -b : byte , -c : charactor
+
+sed "2p" ctxt : 打印第二行
+
+>sed: 行处理器, 以行来处理数据, 可对数据进行新增,删除,修改,替换,选取等功能, 值
+>
+>p: 打印
+>
+>d : 删除  sed "3d" ctx -> 删除第三行, 就是显示除第三行的行
+>
+>a / i : 追加 / 插入 append, insert,  sed "2iinsert txt in top of the second line"
+>
+>c : 替换  sed "2chello" ctxt
+>
+>s : 查找并替换, 同vim   ->     sed "s/aa/bb/" 支持正则 aa [0-9 ]
+>
+>-n : 静默模式, 默认是每行都打印
+>
+>-i : 直接修改源文件, (再内存中删除然后写入到文本)
 
 
 
@@ -398,7 +452,7 @@ gid: 初始时的group id
 
 网页下载:
 
-wget 
+wget -O filename http://xxx.xxx
 
 #### RPM软件安装
 
@@ -418,59 +472,55 @@ rpm -ql packagename : 查看安装后生成的文件列表 l : list
 
 rpm -qc qackagename: 查看安装后生成的配置文件   c : configuration
 
-rpmS
+rpm -qd PACKAGE_NAME: 查询指定包安装的帮助文件
+
+rpm -q --scripts PACKAGE_NAME: 查询指定包中包含的脚本 
+
+rpm -qf /path/to/somefile: 查询文件是由哪个rpm包安装生成的
 
 
 
+#### Yum源
+
+>Yellow Dog Updator, Modified : 管理RPM包, 可从远程/本地下载RPM包, 并自动处理依赖关系.
+
+默认是国外源, 可切换为国内源获取本地源
+
+##### 修改为国内源(ali源)
+
+>1.修改配置文件 : 从哪里下载文件等配置修改
+>
+>2.yum clean all : 清空本地依赖缓存(防止冲突)
+>
+>3.yum makecache : 将依赖缓存下载的本地
+>
+>见: https://developer.aliyun.com/mirror/centos?spm=a2c6h.13651102.0.0.3e221b111m23U1
+>
+>
+
+##### 修改为本地源
+
+>1: repo本地目录源(一般再光盘中)：
+>
+>  mount /dev/cdrom /mnt : 挂载到mnt
+>
+>2: 修改/etc/yum.repo.d/CentOS-Base.repo 
+>
+> baseurl=file:///mnt
+>
+> gpgcheck=0
+>
+> enable=1
+>
+> 
+>
+>yum clean all
+>
+>yum makecache
+>
+>yum repolist
 
 
-Yum源
-
-
-
-
-
-
-
-yum ? wget?? 源>???
-
-### 常用命名
-
-```
-解压tar.gz文件
-	tar -xzvf 
-修改文件名 
-	使用移动文件命令 mv fileA fileB 
-创建文件夹
-	mkdir dirName
-创建文件
-	touch fileName
-
-```
-
-
-
-
-
-**查找文件/文件夹**
-
-whereis
-
-find / -name filename*
-
-systemctl status
-
-systemctl start
-
-systemctl restart
-
-systemctl stop
-
-rpm -ivh 安装
-
-rpm -q 查看
-
-rpm -e 卸载
 
 
 
@@ -478,13 +528,7 @@ rpm -e 卸载
 
 安装方式区别?
 
-yum 
-
 apt
-
-rpm
-
-tar -xzvf 
 
 
 
