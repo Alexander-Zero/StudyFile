@@ -16,7 +16,9 @@ Java           new                               ? 自动回收
 
 自动回收垃圾的好处? 
 
-	1. 编程简单, 2. 系统不易出错
+```java
+1. 编程简单, 2. 系统不易出错
+```
 
 手动回收常见问题:
 
@@ -310,7 +312,7 @@ G1三个回收阶段:
      PrintGCDetails PrintGCTimeStamps PrintGCCauses
   4. java -XX:+UseConcMarkSweepGC -XX:+PrintCommandLineFlags HelloGC
   5. java -XX:+PrintFlagsInitial 默认参数值
-  6. java -XX:+PrintFlagsFinal 最终参数值
+  6. z
   7. java -XX:+PrintFlagsFinal | grep xxx 找到对应的参数
   8. java -XX:+PrintFlagsFinal -version |grep GC
 
