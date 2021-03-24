@@ -10,15 +10,17 @@
         <module name="jvmTune" />
         <module name="multi-thread" />
         <module name="rabbitmq" />
+        <module name="sysio" />
         <module name="mq-broker" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
-      <module name="jvm" target="8" />
-      <module name="jvmTune" target="8" />
+      <module name="jvm" target="11" />
+      <module name="jvmTune" target="1.5" />
       <module name="mq-broker" target="8" />
       <module name="multi-thread" target="8" />
-      <module name="rabbitmq" target="8" />
+      <module name="rabbitmq" target="1.8" />
+      <module name="sysio" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
