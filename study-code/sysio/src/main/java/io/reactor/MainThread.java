@@ -10,11 +10,17 @@ public class MainThread {
 
     public static void main(String[] args) {
         //1. 创建IOThread (一个或多个)
-        SelectorThreadGroup stg = new SelectorThreadGroup(3);
+        SelectorThreadGroup bossGroup = new SelectorThreadGroup(2);
+
+        SelectorThreadGroup workerGroup = new SelectorThreadGroup(3);
+
+        bossGroup.setWorker(workerGroup);
+
 //    SelectorThreadGroup stg = new SelectorThreadGroup(3);
         //2.将监听的server注册到selector
-        stg.bind(9999);
-
+        bossGroup.bind(9999);
+        bossGroup.bind(8888);
+        bossGroup.bind(7777);
     }
 
 

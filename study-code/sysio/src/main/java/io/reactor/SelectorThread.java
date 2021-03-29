@@ -1,8 +1,5 @@
 package io.reactor;
 
-import com.sun.security.ntlm.Server;
-
-import javax.swing.*;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
@@ -38,9 +35,9 @@ public class SelectorThread implements Runnable {
             try {
 
                 //step 1, select
-                System.out.println(Thread.currentThread().getName() + " before select :" + selector.keys().size());
+//                System.out.println(Thread.currentThread().getName() + " before select :" + selector.keys().size());
                 int nums = selector.select();//阻塞,只是那一刻的FDS, wakeup
-                System.out.println(Thread.currentThread().getName() + " after select :" + selector.keys().size());
+//                System.out.println(Thread.currentThread().getName() + " after select :" + selector.keys().size());
 
 
                 //step 2
@@ -69,10 +66,12 @@ public class SelectorThread implements Runnable {
                     if (c instanceof ServerSocketChannel) {
                         ServerSocketChannel server = (ServerSocketChannel) c;
                         server.register(this.selector, SelectionKey.OP_ACCEPT);
+                        System.out.println(Thread.currentThread().getName() + " register a server :" + server.getLocalAddress());
                     } else if (c instanceof SocketChannel) {
                         SocketChannel client = (SocketChannel) c;
                         ByteBuffer buffer = ByteBuffer.allocate(4096);
                         client.register(selector, SelectionKey.OP_READ, buffer);
+                        System.out.println(Thread.currentThread().getName() + " register a client :" + client.getRemoteAddress());
                     }
                 }
 
@@ -113,7 +112,7 @@ public class SelectorThread implements Runnable {
     }
 
     private void acceptHandler(SelectionKey key) {
-        System.out.println("accept handle ");
+        System.out.println(Thread.currentThread().getName() + " accept client ~~~");
         ServerSocketChannel server = (ServerSocketChannel) key.channel();
         try {
             SocketChannel client = server.accept();

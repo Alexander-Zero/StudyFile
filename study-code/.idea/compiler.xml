@@ -20,7 +20,7 @@
       <module name="mq-broker" target="8" />
       <module name="multi-thread" target="8" />
       <module name="rabbitmq" target="1.8" />
-      <module name="sysio" target="7" />
+      <module name="sysio" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
