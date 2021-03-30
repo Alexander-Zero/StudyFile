@@ -1,6 +1,4 @@
-package io;
-
-import com.sun.security.ntlm.Server;
+package io.basic;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -17,7 +15,7 @@ import java.util.Set;
  * @auther Alexander Zero
  * @date 2021/3/27
  */
-public class SocketMultiplexingSingleThreadV1_1 {
+public class SocketMultiplexingSingleThreadV2 {
 
 
     private ServerSocketChannel server = null;
@@ -39,7 +37,7 @@ public class SocketMultiplexingSingleThreadV1_1 {
 
 
     public static void main(String[] args) throws IOException {
-        SocketMultiplexingSingleThreadV1_1 service = new SocketMultiplexingSingleThreadV1_1();
+        SocketMultiplexingSingleThreadV2 service = new SocketMultiplexingSingleThreadV2();
         service.start();
     }
 
@@ -49,9 +47,9 @@ public class SocketMultiplexingSingleThreadV1_1 {
             if (selector.select() > 0) {
                 Set<SelectionKey> keys = selector.selectedKeys();
                 Iterator<SelectionKey> iter = keys.iterator();
-                iter.remove();
                 while (iter.hasNext()) {
                     SelectionKey key = iter.next();
+                    iter.remove();
                     if (key.isAcceptable()) {
                         acceptHandler(key);
                     } else if (key.isReadable()) {
@@ -64,48 +62,54 @@ public class SocketMultiplexingSingleThreadV1_1 {
         }
     }
 
-    private void writeHandler(SelectionKey key) throws IOException {
-        System.out.println("writeHandler~~~~~~~~~~~~~~~~");
+    private void writeHandler(SelectionKey key) {
+        new Thread(() -> {
+            System.out.println("writeHandler~~~~~~~~~~~~~~~~");
+            SocketChannel client = (SocketChannel) key.channel();
+            ByteBuffer buf = (ByteBuffer) key.attachment();
+            buf.flip();
+            while (buf.hasRemaining()) {
+                try {
+                    client.write(buf);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
-        SocketChannel client = (SocketChannel) key.channel();
-        ByteBuffer buf = (ByteBuffer) key.attachment();
-        buf.flip();
-        while (buf.hasRemaining()) {
+            buf.clear();
+            key.cancel();//key always is writable;
             try {
-                client.write(buf);
+                client.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-
-        buf.clear();
-        key.cancel();//key always is writable;
-        client.close();
+        }).start();
     }
 
     private void readHandler(SelectionKey key) {
-        System.out.println("readHandler~~~~~~~~~~");
-        SocketChannel client = (SocketChannel) key.channel();
-        ByteBuffer buf = (ByteBuffer) key.attachment();
-        buf.clear();
-        int read = 0;
+        new Thread(() -> {
+            System.out.println("readHandler~~~~~~~~~~");
+            SocketChannel client = (SocketChannel) key.channel();
+            ByteBuffer buf = (ByteBuffer) key.attachment();
+            buf.clear();
+            int read = 0;
 
-        try {
-            while (true) {
-                read = client.read(buf);
-                if (read > 0) {
-                    client.register(selector, SelectionKey.OP_WRITE, buf);
-                } else if (read == 0) {
-                    break;
-                } else if (read < 0) {
-                    client.close();
-                    break;
+            try {
+                while (true) {
+                    read = client.read(buf);
+                    if (read > 0) {
+                        client.register(selector, SelectionKey.OP_WRITE, buf);
+                    } else if (read == 0) {
+                        break;
+                    } else if (read < 0) {
+                        client.close();
+                        break;
+                    }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        }).start();
     }
 
     private void acceptHandler(SelectionKey key) {
@@ -115,6 +119,7 @@ public class SocketMultiplexingSingleThreadV1_1 {
             client.configureBlocking(false);
             ByteBuffer buf = ByteBuffer.allocateDirect(4096);
             client.register(selector, SelectionKey.OP_READ, buf);
+            System.out.println("received a client: ");
         } catch (Exception e) {
             e.printStackTrace();
         }
