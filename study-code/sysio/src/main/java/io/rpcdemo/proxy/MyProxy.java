@@ -5,8 +5,10 @@ import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.rpcdemo.rpc.Dispatcher;
+import io.rpcdemo.rpc.ResponseMappingCallback;
 import io.rpcdemo.rpc.protocol.MyContent;
 import io.rpcdemo.rpc.protocol.MyHeader;
+import io.rpcdemo.rpc.transport.ClientFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
@@ -66,7 +68,7 @@ public class MyProxy {
 
                     //2. requestID +　Message, 本地需要缓存requestID
                     //协议
-                    MyHeader header = createHeader(msgBody);
+                    MyHeader header = MyHeader.createHeader(msgBody);
 
                     out.reset();
                     oout = new ObjectOutputStream(out);

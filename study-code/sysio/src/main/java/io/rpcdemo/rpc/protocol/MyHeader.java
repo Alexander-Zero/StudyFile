@@ -1,6 +1,7 @@
 package io.rpcdemo.rpc.protocol;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * @author Alexander Zero
@@ -11,6 +12,20 @@ public class MyHeader implements Serializable {
     private int flag;//协议,具体的协议
     private long requestId;
     private long dataLength;
+
+
+    public static MyHeader createHeader(byte[] msgBody) {
+        MyHeader header = new MyHeader();
+        int dataLength = msgBody.length;
+        int flag = 0x14141414;//具体的协议
+        long requestId = UUID.randomUUID().getLeastSignificantBits();
+
+        header.setFlag(flag);
+        header.setRequestId(requestId);
+        header.setDataLength(dataLength);
+        return header;
+    }
+
 
     public int getFlag() {
         return flag;
