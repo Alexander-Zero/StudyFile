@@ -68,8 +68,6 @@ public class MyRPCTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
     }
 
     //模拟客户端
@@ -99,47 +97,7 @@ public class MyRPCTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 //        Car car = proxyGet(Car.class); //动态代理
 //        car.ooxx("hello");
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

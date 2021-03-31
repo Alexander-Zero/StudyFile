@@ -3,6 +3,10 @@ package io.rpcdemo.rpc.transport;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
+import io.rpcdemo.rpc.protocol.MyContent;
+import io.rpcdemo.rpc.protocol.MyHeader;
+import io.rpcdemo.util.PackMsg;
+import io.rpcdemo.util.SerDerUtil;
 
 import java.util.List;
 
@@ -15,7 +19,7 @@ public class ServerDecoder extends ByteToMessageDecoder {
 
     @Override
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf buf, List<Object> list) throws Exception {
-        int headerSize = 88;
+        int headerSize = 105;
         while (buf.readableBytes() > headerSize) {
             byte[] bytes = new byte[headerSize];
             buf.getBytes(buf.readerIndex(), bytes);

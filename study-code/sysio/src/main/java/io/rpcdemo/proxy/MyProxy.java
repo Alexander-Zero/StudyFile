@@ -1,22 +1,13 @@
 package io.rpcdemo.proxy;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.PooledByteBufAllocator;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.socket.nio.NioSocketChannel;
 import io.rpcdemo.rpc.Dispatcher;
-import io.rpcdemo.rpc.ResponseMappingCallback;
 import io.rpcdemo.rpc.protocol.MyContent;
-import io.rpcdemo.rpc.protocol.MyHeader;
 import io.rpcdemo.rpc.transport.ClientFactory;
 
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectOutputStream;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.net.InetSocketAddress;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -53,30 +44,25 @@ public class MyProxy {
                     String name = interfaceInfo.getName();
                     String methodName = method.getName();
                     Class<?>[] parameterTypes = method.getParameterTypes();
-                    MyContent body = new MyContent();
 
-                    body.setName(name);
-                    body.setMethod(methodName);
-                    body.setParameterTypes(parameterTypes);
-                    body.setArgs(args);
+                    MyContent content = new MyContent();
+                    content.setName(name);
+                    content.setMethod(methodName);
+                    content.setParameterTypes(parameterTypes);
+                    content.setArgs(args);
 
-                    ByteArrayOutputStream out = new ByteArrayOutputStream();
-                    ObjectOutputStream oout = new ObjectOutputStream(out);
-                    oout.writeObject(body);
-                    byte[] msgBody = out.toByteArray();
-
+                  /*  byte[] msgBody = SerDerUtil.ser(content);
 
                     //2. requestID +　Message, 本地需要缓存requestID
-                    //协议
+                    //TODO 协议可能会改变
                     MyHeader header = MyHeader.createHeader(msgBody);
+                    byte[] headerMsg = SerDerUtil.ser(header);*/
 
-                    out.reset();
-                    oout = new ObjectOutputStream(out);
-                    oout.writeObject(header);
-
-                    byte[] headerMsg = out.toByteArray();
-
-//                System.out.println("header size is " + headerMsg.length);
+                    /**
+                     * 1. 缺少注册发现 zk
+                     *
+                     */
+/*
 
                     //3. 连接池 ::　取得连接
                     ClientFactory factory = ClientFactory.getInstance();
@@ -100,10 +86,11 @@ public class MyProxy {
                     channelFuture.channel().closeFuture().channel();
 
 //                latch.await();
+*/
 
                     //5. IO in, 如何将代码往下执行, 睡眠/回调, 如何让线程停下来并继续
                     // CountDownLatch
-
+                    CompletableFuture res = ClientFactory.transport(content);
                     result = res.get();
                 }
                 //local调用, 走代理可扩展
@@ -122,7 +109,7 @@ public class MyProxy {
 
 
                 }
-return result;
+                return result;
             }
 
 

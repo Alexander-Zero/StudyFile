@@ -1,5 +1,8 @@
 package io.rpcdemo.util;
 
+import io.rpcdemo.rpc.protocol.MyContent;
+import io.rpcdemo.rpc.protocol.MyHeader;
+
 /**
  * @author Alexander Zero
  * @version 1.0.0
