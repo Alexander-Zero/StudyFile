@@ -1,4 +1,4 @@
-package io.rpc;
+package io.rpcdemo;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
@@ -9,6 +9,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.ByteToMessageDecoder;
+import io.rpcdemo.proxy.MyProxy;
 import org.junit.Test;
 
 import java.io.*;
@@ -87,7 +88,7 @@ public class MyRPCTest {
             threads[i] = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    Car car = proxyGet(Car.class); //动态代理
+                    Car car = MyProxy.proxyGet(Car.class); //动态代理
                     int args = ai.getAndIncrement();
                     String res = car.ooxx("args: " + args);
 //                    String res = car.ooxx("request exec thread is:　" + Thread.currentThread().getName());
@@ -108,78 +109,6 @@ public class MyRPCTest {
 //        car.ooxx("hello");
     }
 
-    public static <T> T proxyGet(Class<T> interfaceInfo) {
-        //动态代理
-        ClassLoader loader = interfaceInfo.getClassLoader();
-        Class<?>[] methodInfo = {interfaceInfo};
-
-        return (T) Proxy.newProxyInstance(loader, methodInfo, new InvocationHandler() {
-            @Override
-            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                //如何设计consumer对provider的调用过程
-
-                //1. 调用服务, 方法,参数  ==> 封装成message
-                String name = interfaceInfo.getName();
-                String methodName = method.getName();
-                Class<?>[] parameterTypes = method.getParameterTypes();
-                MyContent body = new MyContent();
-
-                body.setName(name);
-                body.setMethod(methodName);
-                body.setParameterTypes(parameterTypes);
-                body.setArgs(args);
-
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
-                ObjectOutputStream oout = new ObjectOutputStream(out);
-                oout.writeObject(body);
-                byte[] msgBody = out.toByteArray();
-
-
-                //2. requestID +　Message, 本地需要缓存requestID
-                //协议
-                MyHeader header = createHeader(msgBody);
-
-                out.reset();
-                oout = new ObjectOutputStream(out);
-                oout.writeObject(header);
-
-                byte[] headerMsg = out.toByteArray();
-
-//                System.out.println("header size is " + headerMsg.length);
-
-                //3. 连接池 ::　取得连接
-                ClientFactory factory = ClientFactory.getInstance();
-                NioSocketChannel channel = factory.getClient(new InetSocketAddress("localhost", 9090));
-
-                //4. 发送 -> 走 IO  out -> 走netty
-
-//                CountDownLatch latch = new CountDownLatch(1);
-                long requestId = header.getRequestId();
-
-                //设置返回值
-                CompletableFuture<Object> res = new CompletableFuture<>();
-                ResponseMappingCallback.addCallBack(requestId, res);
-
-                ByteBuf buf = PooledByteBufAllocator.DEFAULT.buffer(headerMsg.length + headerMsg.length);
-                buf.writeBytes(headerMsg);
-                buf.writeBytes(msgBody);
-                ChannelFuture channelFuture = channel.writeAndFlush(buf);
-                channelFuture.sync();
-
-                channelFuture.channel().closeFuture().channel();
-
-//                latch.await();
-
-                //5. IO in, 如何将代码往下执行, 睡眠/回调, 如何让线程停下来并继续
-                // CountDownLatch
-
-                return res.get();
-            }
-
-
-        });
-
-    }
 
     public static MyHeader createHeader(byte[] msgBody) {
         MyHeader header = new MyHeader();
@@ -207,94 +136,9 @@ interface Fly {
 }
 
 
-class MyContent implements Serializable {
-    private String name;
-    private String method;
-    private Class<?>[] parameterTypes;
-    private Object[] args;
-    private Object res;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMethod() {
-        return method;
-    }
-
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
-    public Class<?>[] getParameterTypes() {
-        return parameterTypes;
-    }
-
-    public void setParameterTypes(Class<?>[] parameterTypes) {
-        this.parameterTypes = parameterTypes;
-    }
-
-    public Object[] getArgs() {
-        return args;
-    }
-
-    public void setArgs(Object[] args) {
-        this.args = args;
-    }
-
-    public Object getRes() {
-        return res;
-    }
-
-    public void setRes(Object res) {
-        this.res = res;
-    }
-
-    @Override
-    public String toString() {
-        return "MyContent{" +
-                "name='" + name + '\'' +
-                ", method='" + method + '\'' +
-                ", parameterTypes=" + Arrays.toString(parameterTypes) +
-                ", args=" + Arrays.toString(args) +
-                '}';
-    }
-}
 
 
-class MyHeader implements Serializable {
-    private int flag;//协议,具体的协议
-    private long requestId;
-    private long dataLength;
 
-    public int getFlag() {
-        return flag;
-    }
-
-    public void setFlag(int flag) {
-        this.flag = flag;
-    }
-
-    public long getRequestId() {
-        return requestId;
-    }
-
-    public void setRequestId(long requestId) {
-        this.requestId = requestId;
-    }
-
-    public long getDataLength() {
-        return dataLength;
-    }
-
-    public void setDataLength(long dataLength) {
-        this.dataLength = dataLength;
-    }
-}
 
 
 class ClientPool {
@@ -658,16 +502,3 @@ class MyFly implements Fly {
 }
 
 
-class Dispatcher {
-    public static ConcurrentHashMap<String, Object> invokeMap = new ConcurrentHashMap<>();
-
-    public void register(String k, Object v) {
-        invokeMap.put(k, v);
-    }
-
-    public Object get(String interfaceName) {
-        return invokeMap.get(interfaceName);
-    }
-
-
-}
