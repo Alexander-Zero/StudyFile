@@ -9,6 +9,7 @@ import io.rpcdemo.rpc.ResponseMappingCallback;
 import io.rpcdemo.rpc.protocol.MyContent;
 import io.rpcdemo.rpc.protocol.MyHeader;
 import io.rpcdemo.rpc.transport.ClientFactory;
+import io.rpcdemo.util.SerDerUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
@@ -53,51 +54,15 @@ public class MyProxy {
                     String name = interfaceInfo.getName();
                     String methodName = method.getName();
                     Class<?>[] parameterTypes = method.getParameterTypes();
-                    MyContent body = new MyContent();
+                    MyContent content = new MyContent();
 
-                    body.setName(name);
-                    body.setMethod(methodName);
-                    body.setParameterTypes(parameterTypes);
-                    body.setArgs(args);
-
-                    ByteArrayOutputStream out = new ByteArrayOutputStream();
-                    ObjectOutputStream oout = new ObjectOutputStream(out);
-                    oout.writeObject(body);
-                    byte[] msgBody = out.toByteArray();
+                    content.setName(name);
+                    content.setMethod(methodName);
+                    content.setParameterTypes(parameterTypes);
+                    content.setArgs(args);
 
 
-                    //2. requestID +　Message, 本地需要缓存requestID
-                    //协议
-                    MyHeader header = MyHeader.createHeader(msgBody);
-
-                    out.reset();
-                    oout = new ObjectOutputStream(out);
-                    oout.writeObject(header);
-
-                    byte[] headerMsg = out.toByteArray();
-
-//                System.out.println("header size is " + headerMsg.length);
-
-                    //3. 连接池 ::　取得连接
-                    ClientFactory factory = ClientFactory.getInstance();
-                    NioSocketChannel channel = factory.getClient(new InetSocketAddress("localhost", 9090));
-
-                    //4. 发送 -> 走 IO  out -> 走netty
-
-//                CountDownLatch latch = new CountDownLatch(1);
-                    long requestId = header.getRequestId();
-
-                    //设置返回值
-                    CompletableFuture<Object> res = new CompletableFuture<>();
-                    ResponseMappingCallback.addCallBack(requestId, res);
-
-                    ByteBuf buf = PooledByteBufAllocator.DEFAULT.buffer(headerMsg.length + headerMsg.length);
-                    buf.writeBytes(headerMsg);
-                    buf.writeBytes(msgBody);
-                    ChannelFuture channelFuture = channel.writeAndFlush(buf);
-                    channelFuture.sync();
-
-                    channelFuture.channel().closeFuture().channel();
+                    CompletableFuture res = ClientFactory.transport(content);
 
 //                latch.await();
 
@@ -108,7 +73,6 @@ public class MyProxy {
                 }
                 //local调用, 走代理可扩展
                 else {
-
 
                     Class<?> clazz = o.getClass();
                     Method m = clazz.getMethod(method.getName(), method.getParameterTypes());
@@ -121,8 +85,9 @@ public class MyProxy {
                     }
 
 
+
                 }
-return result;
+                return result;
             }
 
 
