@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/jvm/pom.xml" />
         <option value="$PROJECT_DIR$/jvmTune/pom.xml" />
         <option value="$PROJECT_DIR$/sysio/pom.xml" />
+        <option value="$PROJECT_DIR$/zookeeper/pom.xml" />
       </list>
     </option>
   </component>
