@@ -17,7 +17,9 @@ public class App {
         System.out.println("Hello World!");
 
         final CountDownLatch latch = new CountDownLatch(1);
-        final ZooKeeper zooKeeper = new ZooKeeper("192.168.146.128:2181,192.168.146.129:2181,192.168.146.130:2181,192.168.146.132:2181", 3000, new Watcher() {
+        String servers = "192.168.1.109:2181,192.168.1.110:2181,192.168.1.111:2181,192.168.1.113:2181";
+//        String servers = "192.168.146.128:2181,192.168.146.129:2181,192.168.146.130:2181,192.168.146.132:2181";
+        final ZooKeeper zooKeeper = new ZooKeeper(servers, 3000, new Watcher() {
             @Override
             public void process(WatchedEvent event) {
                 String path = event.getPath();
