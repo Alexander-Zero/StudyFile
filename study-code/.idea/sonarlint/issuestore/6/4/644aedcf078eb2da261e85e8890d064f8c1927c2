@@ -1,0 +1,72 @@
+
+š
+java:S1319"…The type of the "invokeMap" object should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(Åı˜
+C
+java:S1444"/Make this "public static invokeMap" field final(Åı˜
+C
+java:S3740"/Provide the parametrized type for this generic.(Å–Ğ³
+H
+java:S3740"/Provide the parametrized type for this generic.(‘üÙÿÿÿÿÿ
+C
+java:S3740"/Provide the parametrized type for this generic.(ËÁï
+A
+java:S1604"(Make this anonymous inner class a lambda(üì·Ëûÿÿÿÿ
+Z
+java:S2259"AA "NullPointerException" could be thrown; "oin" is nullable here.(¤ö°ùÿÿÿÿ
+X
+java:S2259"DA "NullPointerException" could be thrown; "header" is nullable here.(åÄèË
+[
+java:S2259"BA "NullPointerException" could be thrown; "oout" is nullable here.(ñèÁØüÿÿÿÿ
+i
+java:S1104"UMake invokeMap a static final constant or non-public and provide accessors if needed.(Åı˜
+s
+java:S1488"_Immediately return this expression instead of assigning it to the temporary variable "msgBody".(Î´
+K	java:S106"9Replace this use of System.out or System.err by a logger.(ç¢·`
+Q	java:S106"9Replace this use of System.out or System.err by a logger.(óàå¦ıÿÿÿÿ
+Z
+java:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+Q	java:S106"9Replace this use of System.out or System.err by a logger.(ÿçú¾ÿÿÿÿÿ
+T	java:S125"<This block of commented-out lines of code should be removed.(èâßÀıÿÿÿÿ
+N	java:S125"<This block of commented-out lines of code should be removed.(Æ”^
+O	java:S125"<This block of commented-out lines of code should be removed.(Ç¤şÂ
+T	java:S125"<This block of commented-out lines of code should be removed.(‚®²üÿÿÿÿ
+T	java:S125"<This block of commented-out lines of code should be removed.(çêÛÍıÿÿÿÿ
+?
+java:S1948"&Make "args" transient or serializable.(‹æ°úÿÿÿÿ
+>
+java:S1948"%Make "res" transient or serializable.(ø¥ÏÜúÿÿÿÿ
+Q	java:S106"9Replace this use of System.out or System.err by a logger.(ş«Ú³úÿÿÿÿ
+Z
+java:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+O	java:S125"<This block of commented-out lines of code should be removed.(®ïÿÒ
+O	java:S125"<This block of commented-out lines of code should be removed.(®‹ ‡
+S
+java:S1118":Add a private constructor to hide the implicit public one.(¶ÒÇŞşÿÿÿÿ
+T
+java:S1854"@Remove this useless assignment to local variable "ioThreadName".(¼¼àÃ
+O	java:S125"<This block of commented-out lines of code should be removed.(®‹ ‡
+Q	java:S106"9Replace this use of System.out or System.err by a logger.(ëç»øÿÿÿÿ
+T	java:S125"<This block of commented-out lines of code should be removed.(“Şìùşÿÿÿÿ
+^
+java:S2147"ECombine this catch with the one at line 510, which has the same body.(¤ï¦áÿÿÿÿÿ
+T	java:S125"<This block of commented-out lines of code should be removed.(˜å¢ğıÿÿÿÿ
+T	java:S125"<This block of commented-out lines of code should be removed.(§³â şÿÿÿÿ
+T	java:S125"<This block of commented-out lines of code should be removed.(¹‚¥Ğşÿÿÿÿ
+N
+java:S1118":Add a private constructor to hide the implicit public one.(´¥ÏÉ
+Y
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(‚èöû
+@
+java:S1172",Remove this unused method parameter "calzz".(—¿¯î
+Y
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(—¿¯î
+Y
+java:S2147"ECombine this catch with the one at line 635, which has the same body.(ıàÑÎ
+O	java:S125"<This block of commented-out lines of code should be removed.(Ä½á‹
+L	java:S106"9Replace this use of System.out or System.err by a logger.(¶Ë×†
+N
+java:S2479":Remove the non-escaped \u3000 character from this literal.(¶Ë×†
+1
+java:S2386"Make this member "protected".(Åı˜
+E
+java:S1481"1Remove this unused "ioThreadName" local variable.(¼¼àÃ

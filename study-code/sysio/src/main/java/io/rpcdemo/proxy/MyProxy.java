@@ -3,6 +3,7 @@ package io.rpcdemo.proxy;
 import io.rpcdemo.rpc.Dispatcher;
 import io.rpcdemo.rpc.protocol.MyContent;
 import io.rpcdemo.rpc.transport.ClientFactory;
+import io.rpcdemo.util.SerDerUtil;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
@@ -44,12 +45,18 @@ public class MyProxy {
                     String name = interfaceInfo.getName();
                     String methodName = method.getName();
                     Class<?>[] parameterTypes = method.getParameterTypes();
+<<<<<<< HEAD
 
                     MyContent content = new MyContent();
+=======
+                    MyContent content = new MyContent();
+
+>>>>>>> a730da755158b3bc7cd5ecdb8606422a33da8146
                     content.setName(name);
                     content.setMethod(methodName);
                     content.setParameterTypes(parameterTypes);
                     content.setArgs(args);
+<<<<<<< HEAD
 
                   /*  byte[] msgBody = SerDerUtil.ser(content);
 
@@ -84,6 +91,11 @@ public class MyProxy {
                     channelFuture.sync();
 
                     channelFuture.channel().closeFuture().channel();
+=======
+
+
+                    CompletableFuture res = ClientFactory.transport(content);
+>>>>>>> a730da755158b3bc7cd5ecdb8606422a33da8146
 
 //                latch.await();
 */
@@ -96,7 +108,6 @@ public class MyProxy {
                 //local调用, 走代理可扩展
                 else {
 
-
                     Class<?> clazz = o.getClass();
                     Method m = clazz.getMethod(method.getName(), method.getParameterTypes());
                     try {
@@ -106,6 +117,7 @@ public class MyProxy {
                     } catch (InvocationTargetException e) {
                         e.printStackTrace();
                     }
+
 
 
                 }

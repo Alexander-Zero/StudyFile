@@ -7,8 +7,10 @@
       <module fileurl="file://$PROJECT_DIR$/mq-broker/mq-broker.iml" filepath="$PROJECT_DIR$/mq-broker/mq-broker.iml" />
       <module fileurl="file://$PROJECT_DIR$/multi-thread/multi-thread.iml" filepath="$PROJECT_DIR$/multi-thread/multi-thread.iml" />
       <module fileurl="file://$PROJECT_DIR$/rabbitmq/rabbitmq.iml" filepath="$PROJECT_DIR$/rabbitmq/rabbitmq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/redis/redis.iml" filepath="$PROJECT_DIR$/redis/redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/study-code.iml" filepath="$PROJECT_DIR$/study-code.iml" />
       <module fileurl="file://$PROJECT_DIR$/sysio/sysio.iml" filepath="$PROJECT_DIR$/sysio/sysio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zookeeper/zookeeper.iml" filepath="$PROJECT_DIR$/zookeeper/zookeeper.iml" />
     </modules>
   </component>
 </project>

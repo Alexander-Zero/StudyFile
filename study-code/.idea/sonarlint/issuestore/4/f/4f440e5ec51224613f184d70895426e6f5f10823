@@ -1,0 +1,17 @@
+
+N
+java:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+i
+java:S1989"UHandle the following exception that could be thrown by "getInputStream": IOException.(¹¸ÿø
+e
+java:S1989"QHandle the following exception that could be thrown by "readObject": IOException.(·Ú„»
+]
+java:S2147"DCombine this catch with the one at line 43, which has the same body.(¤ï¦áÿÿÿÿÿ
+o
+java:S1989"VHandle the following exception that could be thrown by "getMethod": SecurityException.(ìÙ¾–ûÿÿÿÿ
+n
+java:S1989"ZHandle the following exception that could be thrown by "invoke": IllegalArgumentException.(Æ„¿ø
+i
+java:S1989"VHandle the following exception that could be thrown by "getOutputStream": IOException.(ûÖé!
+`
+java:S1989"LHandle the following exception that could be thrown by "write": IOException.(¸Ú˜æ

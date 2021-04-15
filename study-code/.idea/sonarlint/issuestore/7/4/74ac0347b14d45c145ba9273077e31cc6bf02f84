@@ -1,0 +1,12 @@
+
+T
+java:S1854"@Remove this useless assignment to local variable "ioThreadName".(ºº‡√
+O	java:S125"<This block of commented-out lines of code should be removed.(Æã†á
+Q	java:S106"9Replace this use of System.out or System.err by a logger.(ÎÁªê¯ˇˇˇˇ
+T	java:S125"<This block of commented-out lines of code should be removed.(ìﬁÏ˘˛ˇˇˇˇ
+]
+java:S2147"DCombine this catch with the one at line 91, which has the same body.(§Ô¶·ˇˇˇˇˇ
+T	java:S125"<This block of commented-out lines of code should be removed.(òÂ¢˝ˇˇˇˇ
+T	java:S125"<This block of commented-out lines of code should be removed.(ß≥‚†˛ˇˇˇˇ
+E
+java:S1481"1Remove this unused "ioThreadName" local variable.(ºº‡√

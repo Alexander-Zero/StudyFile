@@ -1,0 +1,9 @@
+
+š
+java:S1319"…The type of the "invokeMap" object should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(Åı˜
+C
+java:S1444"/Make this "public static invokeMap" field final(Åı˜
+i
+java:S1104"UMake invokeMap a static final constant or non-public and provide accessors if needed.(Åı˜
+1
+java:S2386"Make this member "protected".(Åı˜

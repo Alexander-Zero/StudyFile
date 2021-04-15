@@ -687,3 +687,12 @@ https://blog.csdn.net/qq_42192818/article/details/103604901
 
 ip addr 查看
 
+
+
+
+
+### 定时任务 
+
+crontab -e  用户权限的
+
+vim /etc/crontab : root权限的
