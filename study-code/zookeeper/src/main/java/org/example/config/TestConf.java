@@ -1,18 +1,16 @@
 package org.example.config;
 
-import org.apache.zookeeper.AsyncCallback;
 import org.apache.zookeeper.ZooKeeper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * @author Alexander Zero
  * @version 1.0.0
- * @auther Alexander Zero
- * @date 2021/4/15
+ * @date 2021/4/16
  */
-public class TestConfig {
-
+public class TestConf {
     private ZooKeeper zooKeeper;
 
     @Before
@@ -31,24 +29,24 @@ public class TestConfig {
 
 
     @Test
-    public void configTest() throws InterruptedException {
-        WatchCallBack watchCallBack = new WatchCallBack();
+    public void confTest() {
 
-        zooKeeper.exists("/AppConf", watchCallBack, watchCallBack, "Abc");
-        watchCallBack.await();
-        //1.不存在 ， 应该阻塞等待
+        WatchCallBack wb = new WatchCallBack();
+        MyConf conf = new MyConf();
+        wb.setMyConf(conf);
+        wb.setZooKeeper(zooKeeper);
 
-        //2.存在，往后执行
-
+        wb.await();
 
         while (true) {
-            System.out.println("循环出来");
-            Thread.sleep(300);
+            System.out.println("result : " + conf.getConf());
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+
 
     }
 }
-  
-
-
-

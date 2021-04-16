@@ -1,18 +1,22 @@
 package org.example.config;
 
-import org.apache.zookeeper.*;
+import org.apache.zookeeper.AsyncCallback;
+import org.apache.zookeeper.WatchedEvent;
+import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 
 import java.util.concurrent.CountDownLatch;
 
 /**
+ * @author Alexander Zero
  * @version 1.0.0
- * @auther Alexander Zero
- * @date 2021/4/15
+ * @date 2021/4/16
  */
-public class WatchCallBack implements Watcher, AsyncCallback.DataCallback, AsyncCallback.StatCallback {
+public class WatchCallBack implements Watcher, AsyncCallback.StatCallback, AsyncCallback.DataCallback {
     private CountDownLatch latch = new CountDownLatch(1);
     private ZooKeeper zooKeeper;
+    private MyConf myConf;
 
     public ZooKeeper getZooKeeper() {
         return zooKeeper;
@@ -22,64 +26,62 @@ public class WatchCallBack implements Watcher, AsyncCallback.DataCallback, Async
         this.zooKeeper = zooKeeper;
     }
 
+    public MyConf getMyConf() {
+        return myConf;
+    }
+
+    public void setMyConf(MyConf myConf) {
+        this.myConf = myConf;
+    }
+
     @Override
-    //处理note修改等
-    public void process(WatchedEvent event) {
-        Event.KeeperState state = event.getState();
-
-        Event.EventType type = event.getType();
-
-        switch (type) {
-            case None:
-                break;
+    //note change or update or delete watch
+    public void process(WatchedEvent watchedEvent) {
+        switch (watchedEvent.getType()) {
             case NodeCreated:
-                System.out.println("新建节点了");
                 latch.countDown();
                 break;
             case NodeDeleted:
-                System.out.println("删除了节点");
-                break;
-            case NodeDataChanged:
-                break;
-            case NodeChildrenChanged:
-                break;
-            case DataWatchRemoved:
-                break;
-            case ChildWatchRemoved:
-                break;
-            case PersistentWatchRemoved:
+                latch = new CountDownLatch(1);
+                zooKeeper.exists("/AppConf", this, this, "pppxxx");
                 break;
         }
 
-        zooKeeper.getData("/AppConf",this,this,"Context");
+        zooKeeper.getData("/AppConf", this, this, "xxxooo");
+    }
 
+    @Override
+    //exist call back
+    public void processResult(int i, String s, Object o, Stat stat) {
+        //node exists, pass
+        if (stat != null) {
+            System.out.println("note exists, pass");
+            latch.countDown();
+            //watch 填写与不填写区别
+            //猜测: false , 若先存在后delete note , watch不生效
+            zooKeeper.getData("/AppConf", this, this, "xxxxoooo");
+        }
     }
 
 
     @Override
-    //回调函数，zookeeper取到数据后如何处理
+    //data call back
     public void processResult(int i, String s, Object o, byte[] bytes, Stat stat) {
         String data = new String(bytes);
-        System.out.println(data);
-    }
-
-    @Override
-    //判断存在后如何处理
-    public void processResult(int i, String s, Object o, Stat stat) {
-        if (stat == null) {
-            System.out.println("不存在节点");
-        } else {
-            System.out.println("存在节点");
-            //存在节点 -1 放行
-            latch.countDown();
-        }
+        myConf.setConf(data);
+        myConf.setConf("data is : " + data);
+        System.out.println("exec call back ");
     }
 
     public void await() {
+        zooKeeper.exists("/AppConf", this, this, "xxoo");
+
         try {
             latch.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
+
 }

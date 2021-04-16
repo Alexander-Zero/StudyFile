@@ -23,7 +23,7 @@
       <module name="rabbitmq" target="1.8" />
       <module name="redis" target="1.8" />
       <module name="sysio" target="8" />
-      <module name="zookeeper" target="1.7" />
+      <module name="zookeeper" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
