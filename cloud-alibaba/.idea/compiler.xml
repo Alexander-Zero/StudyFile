@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="cloud-alibaba" />
         <module name="nacos-provider" />
+        <module name="nacos-consumer" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="nacos-consumer" options="-parameters" />
       <module name="nacos-provider" options="-parameters" />
     </option>
   </component>
