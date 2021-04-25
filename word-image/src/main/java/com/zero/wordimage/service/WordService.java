@@ -113,40 +113,76 @@ public class WordService {
     }
 
     private Tc getImageTc(WordprocessingMLPackage wordMLPackage, File image, double high, double width, long tcWidth) throws Exception {
-        Tc tc = factory.createTc();
-        P p = factory.createP();
-        R r = factory.createR();
-
-
-        //设置单元格宽度
-        TcPr tcPr = factory.createTcPr();
-        TblWidth tblWidth = factory.createTblWidth();
-        tblWidth.setW(new BigInteger(String.valueOf(tcWidth)));
-        tblWidth.setType("dxa");
-
-        tcPr.setTcW(tblWidth);
-        tc.setTcPr(tcPr);
-
-        //设置字体居中
-        PPr pPr = factory.createPPr();
-        Jc jc = factory.createJc();
-        jc.setVal(JcEnumeration.CENTER);
-        pPr.setJc(jc);
-        p.setPPr(pPr);
+//        Tc tc = factory.createTc();
+//        P p = factory.createP();
+//        R r = factory.createR();
+//
+//
+//        //设置单元格宽度
+//        TcPr tcPr = factory.createTcPr();
+//        TblWidth tblWidth = factory.createTblWidth();
+//        tblWidth.setW(new BigInteger(String.valueOf(tcWidth)));
+//        tblWidth.setType("dxa");
+//
+//        tcPr.setTcW(tblWidth);
+//        tc.setTcPr(tcPr);
+//
+//        //设置字体居中
+//        PPr pPr = factory.createPPr();
+//        Jc jc = factory.createJc();
+//        jc.setVal(JcEnumeration.CENTER);
+//        pPr.setJc(jc);
+//        p.setPPr(pPr);
+//
+//        Drawing drawing = getDrawing(wordMLPackage, image, high, width);
+//        r.getContent().add(drawing);
+//        p.getContent().add(r);
+//        tc.getContent().add(p);
+//        return tc;
 
         Drawing drawing = getDrawing(wordMLPackage, image, high, width);
-        r.getContent().add(drawing);
-        p.getContent().add(r);
-        tc.getContent().add(p);
-
-        return tc;
+        return getTc(tcWidth, drawing);
     }
 
     private Tc getValueTc(String tcValue, long tcWidth) {
+//        Tc tc = factory.createTc();
+//        P p = factory.createP();
+//        R r = factory.createR();
+//        Text text = factory.createText();
+//
+//
+//        //设置单元格宽度
+//        TcPr tcPr = factory.createTcPr();
+//        TblWidth tblWidth = factory.createTblWidth();
+//        tblWidth.setW(new BigInteger(String.valueOf(tcWidth)));
+//        tblWidth.setType("dxa");
+//
+//        tcPr.setTcW(tblWidth);
+//        tc.setTcPr(tcPr);
+//
+//        //设置字体居中
+//        PPr pPr = factory.createPPr();
+//        Jc jc = factory.createJc();
+//        jc.setVal(JcEnumeration.CENTER);
+//        pPr.setJc(jc);
+//        p.setPPr(pPr);
+//
+//
+//        text.setValue(tcValue);
+//        r.getContent().add(text);
+//        p.getContent().add(r);
+//        tc.getContent().add(p);
+
+        Text text = factory.createText();
+        text.setValue(tcValue);
+        return getTc(tcWidth, text);
+    }
+
+
+    private Tc getTc(long tcWidth, Object textOrDrawing) {
         Tc tc = factory.createTc();
         P p = factory.createP();
         R r = factory.createR();
-        Text text = factory.createText();
 
 
         //设置单元格宽度
@@ -161,13 +197,21 @@ public class WordService {
         //设置字体居中
         PPr pPr = factory.createPPr();
         Jc jc = factory.createJc();
+        PPrBase.Spacing spacing = factory.createPPrBaseSpacing();
+
+
         jc.setVal(JcEnumeration.CENTER);
+        BigInteger zero = new BigInteger("4");
+        spacing.setBeforeLines(zero);
+        spacing.setAfterLines(zero);
+        spacing.setBefore(zero);
+        spacing.setAfterLines(zero);
+
+        pPr.setSpacing(spacing);
         pPr.setJc(jc);
         p.setPPr(pPr);
 
-
-        text.setValue(tcValue);
-        r.getContent().add(text);
+        r.getContent().add(textOrDrawing);
         p.getContent().add(r);
         tc.getContent().add(p);
         return tc;
