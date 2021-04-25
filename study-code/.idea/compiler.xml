@@ -13,6 +13,7 @@
         <module name="mq-broker" />
         <module name="rabbitmq" />
         <module name="sysio" />
+        <module name="redis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
