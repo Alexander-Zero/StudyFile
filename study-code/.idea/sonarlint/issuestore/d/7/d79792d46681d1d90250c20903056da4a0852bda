@@ -1,0 +1,17 @@
+
+d
+java:S2095"KUse try-with-resources or close this "ClusterClient" in a "finally" clause.(¯í™Îüÿÿÿÿ
+X
+java:S2095"DUse try-with-resources or close this "Client" in a "finally" clause.(­›Áõ
+C
+java:S3740"/Provide the parametrized type for this generic.(‚Ê«
+l
+java:S2259"SA "NullPointerException" could be thrown; "getConnectionFactory()" can return null.(ˆäÄíûÿÿÿÿ
+N
+java:S1854":Remove this useless assignment to local variable "exists".(É—Ó
+Q
+java:S1854"8Remove this useless assignment to local variable "conn".(ˆäÄíûÿÿÿÿ
+B
+java:S1481")Remove this unused "conn" local variable.(ˆäÄíûÿÿÿÿ
+?
+java:S1481"+Remove this unused "exists" local variable.(É—Ó
