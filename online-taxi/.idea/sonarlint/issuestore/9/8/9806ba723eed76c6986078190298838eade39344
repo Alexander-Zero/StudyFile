@@ -1,4 +1,6 @@
 
-J
-java:S1199"-Extract this nested code block into a method.(ˆ ¨Ü8°›î/
-E	java:S108")Either remove or fill this block of code.(ˆ ¨Ü8°›î/
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(º°‘øÿÿÿÿ8¢½™ë /
+^
+java:S1128"IRemove this unused import 'org.springframework.context.ApplicationEvent'.(È±
+b
+java:S1128"LRemove this unused import 'org.springframework.context.ApplicationListener'.(Ê½åŠ

@@ -1,28 +1,22 @@
 server:
-  port: 8080
+  port: 7900
+
+spring:
+  application:
+    name: cloud-eureka
 
 eureka:
+  instance:
+    hostname: eureka1
+
   client:
-    serviceUrl:
-      defaultZone: https://peer1/eureka/,http://peer2/eureka/,http://peer3/eureka/
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
----
-spring:
-  profiles: peer1
-eureka:
-  instance:
-    hostname: peer1
 
----
-spring:
-  profiles: peer2
-eureka:
-  instance:
-    hostname: peer2
 
----
-spring:
-  profiles: peer3
-eureka:
-  instance:
-    hostname: peer3
+
+
+
