@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="aba181b8-24db-47fb-b0cd-ea039ad7a43d" name="Default Changelist" comment="A" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1txstbxFqKhvxPQ6mFR5vivQ6nG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RunManager" selected="Spring Boot.CloudEurekaApplication">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ApiAuthApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="api-auth" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.zero.apiauth.ApiAuthApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CloudEurekaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="cloud-eureka" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.zero.cloudeureka.CloudEurekaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aba181b8-24db-47fb-b0cd-ea039ad7a43d" name="Default Changelist" comment="" />
+      <created>1623722296569</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1623722296569</updated>
+      <workItem from="1623722297603" duration="11123000" />
+      <workItem from="1623738904810" duration="9102000" />
+    </task>
+    <task id="LOCAL-00001" summary="A">
+      <created>1623748719874</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1623748719874</updated>
+    </task>
+    <task id="LOCAL-00002" summary="A">
+      <created>1623748724676</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1623748724676</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="A" />
+    <option name="LAST_COMMIT_MESSAGE" value="A" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="92" y="92" width="1736" height="866" key="DiffContextDialog" timestamp="1623739297412">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="DiffContextDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1623739297412" />
+    <state x="734" y="265" key="FileChooserDialogImpl" timestamp="1623731703834">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="734" y="265" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1623731703834" />
+    <state width="1877" height="197" key="GridCell.Tab.0.bottom" timestamp="1623745311692">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="197" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1623745311692" />
+    <state width="1877" height="197" key="GridCell.Tab.0.center" timestamp="1623745311692">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="197" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1623745311692" />
+    <state width="1877" height="197" key="GridCell.Tab.0.left" timestamp="1623745311692">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="197" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1623745311692" />
+    <state width="1877" height="197" key="GridCell.Tab.0.right" timestamp="1623745311692">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="197" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1623745311692" />
+    <state width="1877" height="197" key="GridCell.Tab.1.bottom" timestamp="1623745287239">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="197" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1623745287239" />
+    <state width="1877" height="197" key="GridCell.Tab.1.center" timestamp="1623745287238">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="197" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1623745287238" />
+    <state width="1877" height="197" key="GridCell.Tab.1.left" timestamp="1623745287238">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="197" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1623745287238" />
+    <state width="1877" height="197" key="GridCell.Tab.1.right" timestamp="1623745287239">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="197" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1623745287239" />
+    <state width="1877" height="197" key="GridCell.Tab.2.bottom" timestamp="1623745279156">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="197" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1623745279156" />
+    <state width="1877" height="197" key="GridCell.Tab.2.center" timestamp="1623745279156">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="197" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1623745279156" />
+    <state width="1877" height="197" key="GridCell.Tab.2.left" timestamp="1623745279156">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="197" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1623745279156" />
+    <state width="1877" height="197" key="GridCell.Tab.2.right" timestamp="1623745279156">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="197" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1623745279156" />
+    <state x="461" y="169" key="SettingsEditor" timestamp="1623725357527">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="461" y="169" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1623725357527" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1623748739442">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1623748739442" />
+    <state x="662" y="257" width="596" height="536" key="find.popup" timestamp="1623745461899">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="662" y="257" width="596" height="536" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1623745461899" />
+    <state x="334" y="185" key="new project wizard" timestamp="1623725130309">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="334" y="185" key="new project wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1623725130309" />
+    <state x="601" y="251" width="700" height="530" key="recent.locations.popup" timestamp="1623744882257">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="601" y="251" width="700" height="530" key="recent.locations.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1623744882257" />
+    <state x="616" y="243" key="run.anything.popup" timestamp="1623742913143">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="616" y="243" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1623742913143" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-eureka-server/3.0.2/spring-cloud-netflix-eureka-server-3.0.2-sources.jar!/org/springframework/cloud/netflix/eureka/server/EurekaDashboardProperties.java</url>
+          <line>74</line>
+          <properties class="org.springframework.cloud.netflix.eureka.server.EurekaDashboardProperties" method="toString">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-eureka-server/3.0.2/spring-cloud-netflix-eureka-server-3.0.2-sources.jar!/org/springframework/cloud/netflix/eureka/server/EurekaController.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-eureka-server/3.0.2/spring-cloud-netflix-eureka-server-3.0.2-sources.jar!/org/springframework/cloud/netflix/eureka/server/EurekaController.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-eureka-server/3.0.2/spring-cloud-netflix-eureka-server-3.0.2-sources.jar!/org/springframework/cloud/netflix/eureka/server/EurekaController.java</url>
+          <line>110</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-eureka-server/3.0.2/spring-cloud-netflix-eureka-server-3.0.2-sources.jar!/org/springframework/cloud/netflix/eureka/server/EurekaController.java</url>
+          <line>120</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-eureka-server/3.0.2/spring-cloud-netflix-eureka-server-3.0.2-sources.jar!/org/springframework/cloud/netflix/eureka/server/EurekaController.java</url>
+          <line>144</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-eureka-server/3.0.2/spring-cloud-netflix-eureka-server-3.0.2-sources.jar!/org/springframework/cloud/netflix/eureka/server/EurekaController.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
