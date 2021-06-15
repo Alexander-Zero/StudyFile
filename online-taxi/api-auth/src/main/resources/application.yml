@@ -1,0 +1,12 @@
+server:
+  port: 8877
+
+spring:
+  application:
+    name: api-auth
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7900/eureka/
