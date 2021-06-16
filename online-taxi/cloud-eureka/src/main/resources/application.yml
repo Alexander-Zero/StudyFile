@@ -14,7 +14,11 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-
+  server:
+    enable-self-preservation: false
+    renewal-percent-threshold: 0.6
+    eviction-interval-timer-in-ms: 1000
+    use-read-only-response-cache: true
 
 
 
