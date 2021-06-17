@@ -23,11 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aba181b8-24db-47fb-b0cd-ea039ad7a43d" name="Default Changelist" comment="A">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/3/8365899bc8482e1eb4123a5e4b51a44a09e4771f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/3/8365899bc8482e1eb4123a5e4b51a44a09e4771f" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/8/9806ba723eed76c6986078190298838eade39344" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/8/9806ba723eed76c6986078190298838eade39344" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-auth/src/main/java/com/zero/apiauth/ApiAuthApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-auth/src/main/java/com/zero/apiauth/ApiAuthApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud-eureka/src/main/java/com/zero/cloudeureka/CloudEurekaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-eureka/src/main/java/com/zero/cloudeureka/CloudEurekaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-auth/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-auth/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cloud-eureka/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-eureka/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +72,18 @@
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
-  <component name="RunManager" selected="Spring Boot.CloudEurekaApplication">
+  <component name="RunManager" selected="Spring Boot.ApiAuthApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ApiAuthApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="api-auth" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.zero.apiauth.ApiAuthApplication" />
@@ -99,7 +109,9 @@
       <updated>1623722296569</updated>
       <workItem from="1623722297603" duration="11123000" />
       <workItem from="1623738904810" duration="23042000" />
-      <workItem from="1623826439549" duration="6108000" />
+      <workItem from="1623826439549" duration="15939000" />
+      <workItem from="1623912177496" duration="1924000" />
+      <workItem from="1623914265146" duration="7936000" />
     </task>
     <task id="LOCAL-00001" summary="A">
       <created>1623748719874</created>
@@ -138,10 +150,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="A" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="442" height="466" key="DebuggerActiveHint" timestamp="1623824894226">
+    <state width="882" height="466" key="DebuggerActiveHint" timestamp="1623922254389">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="442" height="466" key="DebuggerActiveHint/0.0.1920.1050@0.0.1920.1050" timestamp="1623824894226" />
+    <state width="882" height="466" key="DebuggerActiveHint/0.0.1920.1050@0.0.1920.1050" timestamp="1623922254389" />
     <state x="92" y="92" width="1736" height="866" key="DiffContextDialog" timestamp="1623739297412">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -150,70 +162,74 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="734" y="265" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1623731703834" />
-    <state width="1877" height="215" key="GridCell.Tab.0.bottom" timestamp="1623834506268">
+    <state width="1877" height="338" key="GridCell.Tab.0.bottom" timestamp="1623922242274">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1623834506268" />
-    <state width="1877" height="215" key="GridCell.Tab.0.center" timestamp="1623834506268">
+    <state width="1877" height="338" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
+    <state width="1877" height="338" key="GridCell.Tab.0.center" timestamp="1623922242274">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1623834506268" />
-    <state width="1877" height="215" key="GridCell.Tab.0.left" timestamp="1623834506268">
+    <state width="1877" height="338" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
+    <state width="1877" height="338" key="GridCell.Tab.0.left" timestamp="1623922242274">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1623834506268" />
-    <state width="1877" height="215" key="GridCell.Tab.0.right" timestamp="1623834506268">
+    <state width="1877" height="338" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
+    <state width="1877" height="338" key="GridCell.Tab.0.right" timestamp="1623922242274">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1623834506268" />
-    <state width="1877" height="215" key="GridCell.Tab.1.bottom" timestamp="1623834506268">
+    <state width="1877" height="338" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
+    <state width="1877" height="338" key="GridCell.Tab.1.bottom" timestamp="1623922242274">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1623834506268" />
-    <state width="1877" height="215" key="GridCell.Tab.1.center" timestamp="1623834506268">
+    <state width="1877" height="338" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
+    <state width="1877" height="338" key="GridCell.Tab.1.center" timestamp="1623922242274">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1623834506268" />
-    <state width="1877" height="215" key="GridCell.Tab.1.left" timestamp="1623834506268">
+    <state width="1877" height="338" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
+    <state width="1877" height="338" key="GridCell.Tab.1.left" timestamp="1623922242274">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1623834506268" />
-    <state width="1877" height="215" key="GridCell.Tab.1.right" timestamp="1623834506268">
+    <state width="1877" height="338" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
+    <state width="1877" height="338" key="GridCell.Tab.1.right" timestamp="1623922242274">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1623834506268" />
-    <state width="1877" height="215" key="GridCell.Tab.2.bottom" timestamp="1623834506269">
+    <state width="1877" height="338" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
+    <state width="1877" height="338" key="GridCell.Tab.2.bottom" timestamp="1623922242275">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1623834506269" />
-    <state width="1877" height="215" key="GridCell.Tab.2.center" timestamp="1623834506268">
+    <state width="1877" height="338" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242275" />
+    <state width="1877" height="338" key="GridCell.Tab.2.center" timestamp="1623922242275">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1623834506268" />
-    <state width="1877" height="215" key="GridCell.Tab.2.left" timestamp="1623834506268">
+    <state width="1877" height="338" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242275" />
+    <state width="1877" height="338" key="GridCell.Tab.2.left" timestamp="1623922242274">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1623834506268" />
-    <state width="1877" height="215" key="GridCell.Tab.2.right" timestamp="1623834506269">
+    <state width="1877" height="338" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
+    <state width="1877" height="338" key="GridCell.Tab.2.right" timestamp="1623922242275">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="215" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1623834506269" />
+    <state width="1877" height="338" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242275" />
     <state x="461" y="169" key="SettingsEditor" timestamp="1623725357527">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="169" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1623725357527" />
-    <state width="662" height="548" key="SwitcherDM" timestamp="1623813864459">
+    <state width="662" height="603" key="SwitcherDM" timestamp="1623894379632">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="662" height="548" key="SwitcherDM/0.0.1920.1050@0.0.1920.1050" timestamp="1623813864459" />
+    <state width="662" height="603" key="SwitcherDM/0.0.1920.1050@0.0.1920.1050" timestamp="1623894379632" />
     <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1623749358664">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1623749358664" />
-    <state x="662" y="257" width="983" height="598" key="find.popup" timestamp="1623817394144">
+    <state x="382" y="253" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1623920774792">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="662" y="257" width="983" height="598" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1623817394144" />
+    <state x="382" y="253" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1050@0.0.1920.1050" timestamp="1623920774792" />
+    <state x="662" y="257" width="983" height="598" key="find.popup" timestamp="1623918996239">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="662" y="257" width="983" height="598" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1623918996239" />
     <state x="334" y="185" key="new project wizard" timestamp="1623725130309">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -222,10 +238,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="251" width="700" height="530" key="recent.locations.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1623744882257" />
-    <state x="616" y="243" key="run.anything.popup" timestamp="1623833364097">
+    <state x="616" y="243" key="run.anything.popup" timestamp="1623920182895">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="616" y="243" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1623833364097" />
+    <state x="616" y="243" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1623920182895" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -238,25 +254,65 @@
           </properties>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-eureka-client/3.0.3/spring-cloud-netflix-eureka-client-3.0.3-sources.jar!/org/springframework/cloud/netflix/eureka/config/EurekaConfigServerBootstrapper.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-core/1.10.14/eureka-core-1.10.14-sources.jar!/com/netflix/eureka/registry/ResponseCacheImpl.java</url>
-          <line>147</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-core/1.10.11/eureka-core-1.10.11-sources.jar!/com/netflix/eureka/registry/ResponseCacheImpl.java</url>
           <line>146</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-core/1.10.11/eureka-core-1.10.11-sources.jar!/com/netflix/eureka/registry/ResponseCacheImpl.java</url>
           <line>147</line>
           <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-core/1.10.14/eureka-core-1.10.14-sources.jar!/com/netflix/eureka/registry/ResponseCacheImpl.java</url>
+          <line>231</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-core/1.10.14/eureka-core-1.10.14-sources.jar!/com/netflix/eureka/resources/ApplicationsResource.java</url>
+          <line>203</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-netflix-eureka-client/3.0.3/spring-cloud-netflix-eureka-client-3.0.3-sources.jar!/org/springframework/cloud/netflix/eureka/config/EurekaConfigServerBootstrapper.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-client/1.10.14/eureka-client-1.10.14-sources.jar!/com/netflix/discovery/DiscoveryClient.java</url>
+          <line>475</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-client/1.10.14/eureka-client-1.10.14-sources.jar!/com/netflix/discovery/DiscoveryClient.java</url>
+          <line>440</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-client/1.10.14/eureka-client-1.10.14-sources.jar!/com/netflix/discovery/DiscoveryClient.java</url>
+          <line>1013</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-client/1.10.14/eureka-client-1.10.14-sources.jar!/com/netflix/discovery/DiscoveryClient.java</url>
+          <line>1100</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-client/1.10.14/eureka-client-1.10.14-sources.jar!/com/netflix/discovery/shared/transport/decorator/RetryableEurekaHttpClient.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-client/1.10.14/eureka-client-1.10.14-sources.jar!/com/netflix/discovery/shared/transport/decorator/RetryableEurekaHttpClient.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-client/1.10.14/eureka-client-1.10.14-sources.jar!/com/netflix/discovery/shared/transport/decorator/RetryableEurekaHttpClient.java</url>
+          <line>161</line>
+          <option name="timeStamp" value="62" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
