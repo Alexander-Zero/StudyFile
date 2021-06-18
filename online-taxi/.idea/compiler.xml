@@ -8,15 +8,19 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="online-taxi" />
+        <module name="api-staff" />
         <module name="cloud-eureka" />
         <module name="api-auth" />
+        <module name="cloud-zuul" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-auth" options="-parameters" />
+      <module name="api-staff" options="-parameters" />
       <module name="cloud-eureka" options="-parameters" />
+      <module name="cloud-zuul" options="-parameters" />
     </option>
   </component>
 </project>

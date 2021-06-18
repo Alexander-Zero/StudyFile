@@ -1,0 +1,18 @@
+server:
+  port: 80
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7900/eureka/
+
+
+    registry-fetch-interval-seconds: 5
+  instance:
+    lease-renewal-interval-in-seconds: 5
+
+spring:
+  application:
+    name: zuul-gateway
+
+
+

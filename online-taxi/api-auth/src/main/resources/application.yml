@@ -1,5 +1,4 @@
-server:
-  port: 8877
+
 
 spring:
   application:
@@ -9,8 +8,21 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://xx:7801/eureka/,http://xxc:7802/eureka/,http://localhost:7900/eureka/
-    registry-fetch-interval-seconds: 30
+      defaultZone: http://localhost:7900/eureka/
+    registry-fetch-interval-seconds: 5
 
   instance:
-    lease-renewal-interval-in-seconds: 30
+    lease-renewal-interval-in-seconds: 5
+
+
+---
+server:
+  port: 8866
+
+spring:
+  profiles: test1
+---
+server:
+  port: 8877
+spring:
+  profiles: test2

@@ -23,16 +23,80 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aba181b8-24db-47fb-b0cd-ea039ad7a43d" name="Default Changelist" comment="A">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/8/9806ba723eed76c6986078190298838eade39344" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/8/9806ba723eed76c6986078190298838eade39344" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/4/04f68f260dc30fea23537c0c5bf85dc744149192" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1b8ed8cca48052c141c70d9b0d935a9720f46674" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/206ee66c9bb87eae081531b1efd0ae710e3711ea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/80b6ba800c79e4f97c62dcbb26f679606be08d6c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9bacc0eb6b1f09b69bcb499e62716ef84452e8ac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/2/a21eee4b575af5785aece6468046db1863a1f49d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/4/b4dcabda2b523415caf8c1e0f2cf75ec1307af1c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-auth/target/classes/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-auth/target/classes/com/zero/apiauth/ApiAuthApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-auth/target/test-classes/com/zero/apiauth/ApiAuthApplicationTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/src/main/java/com/zero/apistaff/ApiStaffApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/src/main/java/com/zero/apistaff/config/BeanConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/src/main/java/com/zero/apistaff/config/GrayRule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/src/main/java/com/zero/apistaff/config/RequestUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/src/main/java/com/zero/apistaff/controller/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/src/test/java/com/zero/apistaff/ApiStaffApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/target/classes/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/target/classes/com/zero/apistaff/ApiStaffApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/target/classes/com/zero/apistaff/config/BeanConfiguration.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/target/classes/com/zero/apistaff/config/GrayRule.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/target/classes/com/zero/apistaff/config/RequestUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/target/classes/com/zero/apistaff/controller/TestController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-staff/target/test-classes/com/zero/apistaff/ApiStaffApplicationTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-eureka/target/classes/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-eureka/target/classes/com/zero/cloudeureka/CloudEurekaApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-eureka/target/test-classes/com/zero/cloudeureka/CloudEurekaApplicationTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-zuul/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-zuul/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-zuul/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-zuul/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-zuul/src/main/java/com/zero/cloudzuul/CloudZuulApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-zuul/src/main/java/com/zero/cloudzuul/filter/GrayFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-zuul/src/main/java/com/zero/cloudzuul/filter/GrayPostFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-zuul/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-zuul/src/test/java/com/zero/cloudzuul/CloudZuulApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-zuul/target/classes/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-zuul/target/classes/com/zero/cloudzuul/CloudZuulApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-zuul/target/classes/com/zero/cloudzuul/filter/GrayFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-zuul/target/test-classes/com/zero/cloudzuul/CloudZuulApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/3/8365899bc8482e1eb4123a5e4b51a44a09e4771f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/3/8365899bc8482e1eb4123a5e4b51a44a09e4771f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-auth/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-auth/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-auth/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-auth/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-auth/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-auth/src/main/java/com/zero/apiauth/ApiAuthApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-auth/src/main/java/com/zero/apiauth/ApiAuthApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-auth/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-auth/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-eureka/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-eureka/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-eureka/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-eureka/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-eureka/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cloud-eureka/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-eureka/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -60,6 +124,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/online-taxi-file-master/三期/online-taxi-three" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -67,12 +132,15 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
-  <component name="RunManager" selected="Spring Boot.ApiAuthApplication">
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ApiStaffApplication">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -84,9 +152,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ApiAuthApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="ApiAuthApplication-test1" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="api-auth" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.zero.apiauth.ApiAuthApplication" />
+      <option name="ACTIVE_PROFILES" value="test1" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ApiAuthApplication-test2" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="api-auth" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.zero.apiauth.ApiAuthApplication" />
+      <option name="ACTIVE_PROFILES" value="test2" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ApiStaffApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="api-staff" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.zero.apistaff.ApiStaffApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -98,6 +184,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CloudZuulApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="cloud-zuul" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.zero.cloudzuul.CloudZuulApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.ApiAuthApplication-test1" />
+      <item itemvalue="Spring Boot.ApiAuthApplication-test2" />
+      <item itemvalue="Spring Boot.CloudEurekaApplication" />
+      <item itemvalue="Spring Boot.CloudZuulApplication" />
+      <item itemvalue="Spring Boot.ApiStaffApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -111,7 +211,9 @@
       <workItem from="1623738904810" duration="23042000" />
       <workItem from="1623826439549" duration="15939000" />
       <workItem from="1623912177496" duration="1924000" />
-      <workItem from="1623914265146" duration="7936000" />
+      <workItem from="1623914265146" duration="9376000" />
+      <workItem from="1623980970942" duration="8812000" />
+      <workItem from="1623991271033" duration="5647000" />
     </task>
     <task id="LOCAL-00001" summary="A">
       <created>1623748719874</created>
@@ -127,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623748724676</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="A">
+      <created>1623923007807</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1623923007807</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +259,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="A" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="414" y="179" width="1092" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1623983789971">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="414" y="179" width="1092" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1623983789971" />
+    <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1624005822181">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1624005822181" />
+    <state x="689" y="326" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1623983746850">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="689" y="326" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1623983746850" />
     <state width="882" height="466" key="DebuggerActiveHint" timestamp="1623922254389">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -158,90 +279,98 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="92" y="92" width="1736" height="866" key="DiffContextDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1623739297412" />
-    <state x="734" y="265" key="FileChooserDialogImpl" timestamp="1623731703834">
+    <state x="734" y="265" key="FileChooserDialogImpl" timestamp="1623981166608">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="734" y="265" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1623731703834" />
-    <state width="1877" height="338" key="GridCell.Tab.0.bottom" timestamp="1623922242274">
+    <state x="734" y="265" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1623981166608" />
+    <state x="771" y="425" key="Github.CreateGistDialog" timestamp="1623986228015">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
-    <state width="1877" height="338" key="GridCell.Tab.0.center" timestamp="1623922242274">
+    <state x="771" y="425" key="Github.CreateGistDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1623986228015" />
+    <state width="1877" height="468" key="GridCell.Tab.0.bottom" timestamp="1624008206312">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
-    <state width="1877" height="338" key="GridCell.Tab.0.left" timestamp="1623922242274">
+    <state width="1877" height="468" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1624008206312" />
+    <state width="1877" height="468" key="GridCell.Tab.0.center" timestamp="1624008206312">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
-    <state width="1877" height="338" key="GridCell.Tab.0.right" timestamp="1623922242274">
+    <state width="1877" height="468" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1624008206312" />
+    <state width="1877" height="468" key="GridCell.Tab.0.left" timestamp="1624008206312">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
-    <state width="1877" height="338" key="GridCell.Tab.1.bottom" timestamp="1623922242274">
+    <state width="1877" height="468" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1624008206312" />
+    <state width="1877" height="468" key="GridCell.Tab.0.right" timestamp="1624008206312">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
-    <state width="1877" height="338" key="GridCell.Tab.1.center" timestamp="1623922242274">
+    <state width="1877" height="468" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1624008206312" />
+    <state width="1877" height="468" key="GridCell.Tab.1.bottom" timestamp="1624008206167">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
-    <state width="1877" height="338" key="GridCell.Tab.1.left" timestamp="1623922242274">
+    <state width="1877" height="468" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1624008206167" />
+    <state width="1877" height="468" key="GridCell.Tab.1.center" timestamp="1624008206166">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
-    <state width="1877" height="338" key="GridCell.Tab.1.right" timestamp="1623922242274">
+    <state width="1877" height="468" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1624008206166" />
+    <state width="1877" height="468" key="GridCell.Tab.1.left" timestamp="1624008206166">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
-    <state width="1877" height="338" key="GridCell.Tab.2.bottom" timestamp="1623922242275">
+    <state width="1877" height="468" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1624008206166" />
+    <state width="1877" height="468" key="GridCell.Tab.1.right" timestamp="1624008206167">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242275" />
-    <state width="1877" height="338" key="GridCell.Tab.2.center" timestamp="1623922242275">
+    <state width="1877" height="468" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1624008206167" />
+    <state width="1877" height="468" key="GridCell.Tab.2.bottom" timestamp="1624008206167">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242275" />
-    <state width="1877" height="338" key="GridCell.Tab.2.left" timestamp="1623922242274">
+    <state width="1877" height="468" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1624008206167" />
+    <state width="1877" height="468" key="GridCell.Tab.2.center" timestamp="1624008206167">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242274" />
-    <state width="1877" height="338" key="GridCell.Tab.2.right" timestamp="1623922242275">
+    <state width="1877" height="468" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1624008206167" />
+    <state width="1877" height="468" key="GridCell.Tab.2.left" timestamp="1624008206167">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1623922242275" />
-    <state x="461" y="169" key="SettingsEditor" timestamp="1623725357527">
+    <state width="1877" height="468" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1624008206167" />
+    <state width="1877" height="468" key="GridCell.Tab.2.right" timestamp="1624008206167">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="461" y="169" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1623725357527" />
-    <state width="662" height="603" key="SwitcherDM" timestamp="1623894379632">
+    <state width="1877" height="468" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1624008206167" />
+    <state x="487" y="230" key="SettingsEditor" timestamp="1623991239542">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="662" height="603" key="SwitcherDM/0.0.1920.1050@0.0.1920.1050" timestamp="1623894379632" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1623749358664">
+    <state x="487" y="230" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1623991239542" />
+    <state width="662" height="666" key="SwitcherDM" timestamp="1624007953432">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1623749358664" />
-    <state x="382" y="253" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1623920774792">
+    <state width="662" height="666" key="SwitcherDM/0.0.1920.1050@0.0.1920.1050" timestamp="1624007953432" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1623923017638">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="382" y="253" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1050@0.0.1920.1050" timestamp="1623920774792" />
-    <state x="662" y="257" width="983" height="598" key="find.popup" timestamp="1623918996239">
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1623923017638" />
+    <state x="382" y="253" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1623991043818">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="662" y="257" width="983" height="598" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1623918996239" />
-    <state x="334" y="185" key="new project wizard" timestamp="1623725130309">
+    <state x="382" y="253" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1050@0.0.1920.1050" timestamp="1623991043818" />
+    <state x="662" y="257" width="983" height="598" key="find.popup" timestamp="1624003864634">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="334" y="185" key="new project wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1623725130309" />
+    <state x="662" y="257" width="983" height="598" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1624003864634" />
+    <state x="334" y="185" width="1251" height="675" key="new project wizard" timestamp="1623990496593">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="334" y="185" width="1251" height="675" key="new project wizard/0.0.1920.1050@0.0.1920.1050" timestamp="1623990496593" />
     <state x="601" y="251" width="700" height="530" key="recent.locations.popup" timestamp="1623744882257">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="601" y="251" width="700" height="530" key="recent.locations.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1623744882257" />
-    <state x="616" y="243" key="run.anything.popup" timestamp="1623920182895">
+    <state x="616" y="243" key="run.anything.popup" timestamp="1624003964726">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="616" y="243" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1623920182895" />
+    <state x="616" y="243" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1624003964726" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1623986791059">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1623986791059" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -284,35 +413,25 @@
           <line>475</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-client/1.10.14/eureka-client-1.10.14-sources.jar!/com/netflix/discovery/DiscoveryClient.java</url>
-          <line>440</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-client/1.10.14/eureka-client-1.10.14-sources.jar!/com/netflix/discovery/DiscoveryClient.java</url>
-          <line>1013</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-client/1.10.14/eureka-client-1.10.14-sources.jar!/com/netflix/discovery/DiscoveryClient.java</url>
-          <line>1100</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-client/1.10.14/eureka-client-1.10.14-sources.jar!/com/netflix/discovery/shared/transport/decorator/RetryableEurekaHttpClient.java</url>
           <line>114</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-client/1.10.14/eureka-client-1.10.14-sources.jar!/com/netflix/discovery/shared/transport/decorator/RetryableEurekaHttpClient.java</url>
           <line>105</line>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$USER_HOME$/.m2/repository/com/netflix/eureka/eureka-client/1.10.14/eureka-client-1.10.14-sources.jar!/com/netflix/discovery/shared/transport/decorator/RetryableEurekaHttpClient.java</url>
           <line>161</line>
           <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api-staff/src/main/java/com/zero/apistaff/config/GrayRule.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="82" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
