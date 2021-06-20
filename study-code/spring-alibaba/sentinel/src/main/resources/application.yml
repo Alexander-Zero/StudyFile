@@ -1,0 +1,24 @@
+server:
+  port: 6789
+
+spring:
+  cloud:
+    sentinel:
+      transport:
+        dashboard: http://localhost:8081
+      eager: true
+
+      datasource:
+        ds:
+          nacos:
+            server-addr: http://localhost:8848
+            dataId: sentinel
+            groupId: DEFAULT_GROUP
+            ruleType: flow
+
+
+
+
+  application:
+    name: sentinel
+

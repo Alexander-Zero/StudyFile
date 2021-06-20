@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gataway/gataway.iml" filepath="$PROJECT_DIR$/gataway/gataway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sentinel/sentinel.iml" filepath="$PROJECT_DIR$/sentinel/sentinel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-alibaba.iml" filepath="$PROJECT_DIR$/spring-alibaba.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,56 @@
+server:
+  port: 80
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: api-staff
+          uri: lb://api-staff
+          predicates:
+            - Path=/api-staff/**
+#            - Query=id
+            - Method=GET
+            - RemoteAddr=192.168.2.1/24
+          filters:
+            - StripPrefix=1
+
+        - id: api-auth-test1
+          uri: http://localhost:8866
+          predicates:
+            - Weight=api-auth, 1
+          filters:
+            - StripPrefix=1
+        - id: api-auth-test2
+          uri: http://localhost:8877
+          predicates:
+            - Weight=api-auth, 5
+          filters:
+            - StripPrefix=1
+#¸ºÔØ¾ùºâ
+api-auth:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+
+
+
+
+
+  application:
+    name: gateway
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7900/eureka/
+    registry-fetch-interval-seconds: 5
+  instance:
+    lease-renewal-interval-in-seconds: 5
+
+
+

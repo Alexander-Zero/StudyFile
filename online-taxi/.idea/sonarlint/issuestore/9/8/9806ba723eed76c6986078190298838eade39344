@@ -1,10 +1,0 @@
-
-b
-java:S1128	"LRemove this unused import 'org.springframework.context.ApplicationListener'.(Ê½åŠ
-N
-java:S1128",Remove this unused import 'java.util.Timer'.(†£ñáÿÿÿÿÿ8»ãÕ—¡/
-^
-java:S1128"IRemove this unused import 'org.springframework.context.ApplicationEvent'.(È±
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(º°‘øÿÿÿÿ8¢½™ë /
-o
-java:S1128"MRemove this unused import 'com.netflix.eureka.resources.ApplicationResource'.(ˆÖĞĞşÿÿÿÿ8ŸùÒ˜¡/
