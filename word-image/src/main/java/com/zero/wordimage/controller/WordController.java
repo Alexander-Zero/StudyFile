@@ -27,6 +27,7 @@ public class WordController {
                          @RequestParam double height,
                          @RequestParam double width,
                          HttpServletResponse response) throws Exception {
+
         wordService.generate(dir, columnSize, height, width, response);
     }
 
