@@ -1,8 +1,8 @@
 
-;
-java:S2189""Add an end condition to this loop.(˜ïˆžÿÿÿÿÿ
-Z
-java:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
-Q	java:S106"9Replace this use of System.out or System.err by a logger.(©™ÚÖúÿÿÿÿ
-Z
-java:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+S	java:S106*"9Replace this use of System.out or System.err by a logger.(©™ÚÖúÿÿÿÿ
+=
+java:S2189)""Add an end condition to this loop.(˜ïˆžÿÿÿÿÿ
+\
+java:S2142-"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+\
+java:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€

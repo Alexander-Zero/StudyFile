@@ -1,10 +1,10 @@
 
-d
-java:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ƒð­§øÿÿÿÿ
+<	java:S131>""Add a default case to this switch.(ƒð­§øÿÿÿÿ
+N	java:S106W"9Replace this use of System.out or System.err by a logger.(¤À½€
+N	java:S106B"9Replace this use of System.out or System.err by a logger.(úšý—
+f
+java:S1301>"KReplace this "switch" statement by "if" statements to increase readability.(ƒð­§øÿÿÿÿ
 Z
-java:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
-X
-java:S2147"DCombine this catch with the one at line 52, which has the same body.(¹¯Óˆ
-q	java:S131"YComplete cases by adding the missing enum constants or add a default case to this switch.(ƒð­§øÿÿÿÿ
-L	java:S106"9Replace this use of System.out or System.err by a logger.(úšý—
-L	java:S106"9Replace this use of System.out or System.err by a logger.(¤À½€
+java:S21476"DCombine this catch with the one at line 52, which has the same body.(¹¯Óˆ
+\
+java:S21424"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
